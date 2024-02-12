@@ -1,0 +1,33 @@
+diff --git a/libfprint/drivers/goodixmoc/goodix.c b/libfprint/drivers/goodixmoc/goodix.c
+index d012d46..3078566 100644
+--- a/libfprint/drivers/goodixmoc/goodix.c
++++ b/libfprint/drivers/goodixmoc/goodix.c
+@@ -73,6 +73,11 @@ typedef struct
+   SynCmdMsgCallback callback;
+ } CommandData;
+ 
++static inline void delete_all_callback()
++{
++  g_debug ("delete all -- callback fired - all fingerprints deleted");
++}
++
+ static gboolean parse_print_data (GVariant      *data,
+                                   guint8        *finger,
+                                   const guint8 **tid,
+@@ -634,6 +639,16 @@ fp_enroll_identify_cb (FpiDeviceGoodixMoc  *self,
+     }
+   if (resp->verify.match)
+     {
++      g_debug ("delete all -- sending command");
++
++      goodix_sensor_cmd (self, MOC_CMD0_DELETETEMPLATE, MOC_CMD1_DELETE_ALL,
++                         false,
++                         NULL,
++                         0,
++                         delete_all_callback);
++
++      g_debug ("delete all -- command triggered");
++
+       fpi_ssm_mark_failed (self->task_ssm,
+                            fpi_device_error_new_msg (FP_DEVICE_ERROR_DATA_DUPLICATE,
+                                                      "Finger is too similar to another, try use a different finger"));
