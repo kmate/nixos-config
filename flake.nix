@@ -25,6 +25,11 @@
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -35,6 +40,7 @@
     sops-nix,
     home-manager,
     pre-commit-hooks,
+    hyprland,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -57,26 +63,41 @@
           sops-nix.nixosModules.sops
           ./secrets.nix
           ./network.nix
-          ./gui.nix
+          hyprland.nixosModules.default
+          ./desktop.nix
           ./utils.nix
           ./users.nix
           ./fingerprint.nix
           {
             time.timeZone = "Europe/Budapest";
-            i18n.defaultLocale = "en_US.UTF-8";
-            i18n.supportedLocales = [
-              "en_US.UTF-8/UTF-8"
-              "hu_HU.UTF-8/UTF-8"
-            ];
+            i18n = {
+              defaultLocale = "en_US.UTF-8";
+              supportedLocales = [
+                "en_US.UTF-8/UTF-8"
+                "hu_HU.UTF-8/UTF-8"
+              ];
+              extraLocaleSettings = {
+                LC_ADDRESS = "hu_HU.UTF-8";
+                LC_IDENTIFICATION = "hu_HU.UTF-8";
+                LC_MEASUREMENT = "hu_HU.UTF-8";
+                LC_MONETARY = "hu_HU.UTF-8";
+                LC_NAME = "hu_HU.UTF-8";
+                LC_NUMERIC = "hu_HU.UTF-8";
+                LC_PAPER = "hu_HU.UTF-8";
+                LC_TELEPHONE = "hu_HU.UTF-8";
+                LC_TIME = "hu_HU.UTF-8";
+              };
+            };
           }
           home-manager.nixosModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.km = import ./home.nix; # TODO is there a way to move all these to home.nix?
-              # Optionally, use extraSpecialArgs to pass
-              # arguments to home.nix
+              users.km = import ./home.nix;
+              extraSpecialArgs = {
+                inherit hyprland;
+              };
             };
           }
         ];
