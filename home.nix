@@ -81,7 +81,6 @@
     vscode.enable = true;
   };
 
-  # TODO fonts!!
   # TODO cursor size!!
   wayland.windowManager.hyprland = {
     enable = true;
@@ -129,7 +128,8 @@
       bind = $mainMod, F, exec, nemo
       bind = $mainMod, V, togglefloating,
       bind = $mainMod, R, exec, rofiWindow
-      bind = $mainMod, SPACE, exec, hyprctl switchxkblayout teclado-gamer-husky-blizzard next
+      # check hyprctl devices to get device name for keyboard
+      bind = $mainMod, SPACE, exec, hyprctl switchxkblayout at-translated-set-2-keyboard next
 
       # Screenshot
       bind = , Print, exec, grim -g "$(slurp)" - | wl-copy

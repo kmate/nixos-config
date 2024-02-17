@@ -21,6 +21,13 @@ Use `fprintd-enroll` to enroll your fingers.
 The first invocation might fail as the reader's BIOS might already
 contain samples for the given finger from a previous installation.
 
+## Hyperland
+
+### Keyboard layout switch
+
+You might need to check `hyprctl devices` to get device name for keyboard,
+then change the parameters of layout switch binding accordingly.
+
 ## Using this repository
 
 Do a checkout from git, then use `just` to format/check/deploy...
