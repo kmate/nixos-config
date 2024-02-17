@@ -5,6 +5,7 @@
 }: {
   imports = [
     hyprland.homeManagerModules.default
+    ./desktop
   ];
 
   home = {
@@ -27,9 +28,11 @@
         grim
         slurp
         wl-clipboard
+        wlr-randr
         pamixer
         waybar
         swww
+        volantes-cursors
       ])
       ++ (with pkgs.cinnamon; [
         nemo
@@ -78,6 +81,8 @@
     vscode.enable = true;
   };
 
+  # TODO fonts!!
+  # TODO cursor size!!
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
@@ -90,7 +95,7 @@
       exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
       # Autostart
-      exec-once = hyprctl setcursor Bibata-Modern-Classic 24
+      # exec-once = hyprctl setcursor Volantes-Cursors 32
       exec-once = dunst
 
       #source = /home/enzo/.config/hypr/colors

@@ -8,7 +8,7 @@
 
     users.km = {
       isNormalUser = true;
-      extraGroups = ["wheel" "networkmanager"];
+      extraGroups = ["wheel" "networkmanager" "video"];
       packages = with pkgs; [
         google-chrome
       ];

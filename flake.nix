@@ -63,11 +63,12 @@
           sops-nix.nixosModules.sops
           ./secrets.nix
           ./network.nix
-          hyprland.nixosModules.default
-          ./desktop.nix
           ./utils.nix
           ./users.nix
           ./fingerprint.nix
+          hyprland.nixosModules.default
+          ./fonts.nix
+          ./desktop.nix
           {
             time.timeZone = "Europe/Budapest";
             i18n = {

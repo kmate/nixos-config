@@ -17,6 +17,7 @@
         fi
       '';
     };
+    light.enable = true;
     dconf.enable = true;
     regreet.enable = true;
   };
