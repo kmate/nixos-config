@@ -23,7 +23,6 @@
         winetricks
 
         kitty
-        rofi
         dunst
         grim
         slurp
@@ -122,7 +121,7 @@
       bind = $mainMod, M, exit,
       bind = $mainMod, F, exec, nemo
       bind = $mainMod, V, togglefloating,
-      bind = $mainMod, R, exec, rofiWindow
+      bind = $mainMod, R, exec, anyrun
       # check hyprctl devices to get device name for keyboard
       bind = $mainMod, SPACE, exec, hyprctl switchxkblayout at-translated-set-2-keyboard next
 
