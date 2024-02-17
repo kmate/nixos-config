@@ -1,10 +1,10 @@
 {
   pkgs,
-  hyprland,
+  inputs,
   ...
 }: {
   imports = [
-    hyprland.homeManagerModules.default
+    inputs.hyprland.homeManagerModules.default
     ./desktop
   ];
 
@@ -42,11 +42,6 @@
       EDITOR = "vim";
       BROWSER = "google-chrome";
       TERMINAL = "kitty";
-      # TODO do we need anything for AMD?
-      # GBM_BACKEND = "nvidia-drm";
-      # __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-      # LIBVA_DRIVER_NAME = "nvidia"; # hardware acceleration
-      # __GL_VRR_ALLOWED = "1";
       WLR_NO_HARDWARE_CURSORS = "1";
       WLR_RENDERER_ALLOW_SOFTWARE = "1";
       CLUTTER_BACKEND = "wayland";

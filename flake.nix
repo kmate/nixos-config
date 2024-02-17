@@ -35,12 +35,8 @@
   outputs = {
     self,
     nixpkgs,
-    lanzaboote,
-    impermanence,
-    sops-nix,
     home-manager,
     pre-commit-hooks,
-    hyprland,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -56,17 +52,13 @@
         modules = [
           ./nix.nix
           ./hardware.nix
-          lanzaboote.nixosModules.lanzaboote # TODO is there a way to import these in the specific files?
           ./secureboot.nix
-          impermanence.nixosModules.impermanence
           ./impermanence.nix
-          sops-nix.nixosModules.sops
           ./secrets.nix
           ./network.nix
           ./utils.nix
           ./users.nix
           ./fingerprint.nix
-          hyprland.nixosModules.default
           ./fonts.nix
           ./desktop.nix
           {
@@ -97,7 +89,7 @@
               useUserPackages = true;
               users.km = import ./home.nix;
               extraSpecialArgs = {
-                inherit hyprland;
+                inherit inputs;
               };
             };
           }
@@ -119,7 +111,7 @@
     };
 
     devShells.${system}.default = pkgs.mkShell {
-      name = "nixos-flake-shell"; # TODO start zsh after that's being set up?
+      name = "nixos-flake-shell";
       shellHook = ''
         ${self.checks.${system}.pre-commit-check.shellHook}
       '';

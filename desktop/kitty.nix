@@ -14,10 +14,10 @@
     italic_font      jetbrains mono nerd font
     bold_italic_font jetbrains mono nerd font
 
-    font_size 14.0
+    font_size 10.0
 
     # Window padding
-    window_padding_width 10
+    window_padding_width 5
 
     # The basic colors
     foreground              #CDD6F4

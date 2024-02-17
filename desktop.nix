@@ -1,4 +1,8 @@
-{...}: {
+{inputs, ...}: {
+  imports = [
+    inputs.hyprland.nixosModules.default
+  ];
+
   services.greetd = {
     enable = true;
     settings = {
