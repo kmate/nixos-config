@@ -23,7 +23,7 @@
         winetricks
 
         kitty
-        dunst
+        dunst # TODO use mako?
         grim
         slurp
         wl-clipboard
@@ -93,7 +93,7 @@
 
       #source = /home/enzo/.config/hypr/colors
       exec = pkill waybar & sleep 0.5 && waybar
-      # exec-once = swww init & sleep 0.5 && exec wallpaper_random
+      exec-once = swww init & sleep 0.5 && swww img /home/km/repos/nixos-config/desktop/nix-wallpaper-recursive.png
       # exec-once = wallpaper_random
 
       # Set en layout at startup
