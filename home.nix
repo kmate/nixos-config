@@ -181,6 +181,10 @@
       bindm = $mainMod, mouse:272, movewindow
       bindm = $mainMod, mouse:273, resizewindow
       bindm = ALT, mouse:272, resizewindow
+
+      misc {
+        disable_hyprland_logo = true
+      }
     '';
   };
 }
