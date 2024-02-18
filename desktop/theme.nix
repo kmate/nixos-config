@@ -12,7 +12,7 @@
     };
 
     cursorTheme = {
-      name = "Volantes";
+      name = "volantes_cursors";
       package = pkgs.volantes-cursors;
     };
   };

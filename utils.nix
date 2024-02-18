@@ -16,5 +16,4 @@
     ];
     variables.EDITOR = "vim";
   };
-  programs.ssh.startAgent = true; # TODO this doesn't work
 }

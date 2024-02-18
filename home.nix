@@ -70,6 +70,9 @@
         co = "checkout";
         st = "status";
       };
+      extraConfig = {
+        credential.helper = "${pkgs.git.override {withLibsecret = true;}}/bin/git-credential-libsecret";
+      };
     };
 
     vscode.enable = true;
@@ -88,7 +91,7 @@
       exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
       # Autostart
-      # exec-once = hyprctl setcursor Volantes-Cursors 32
+      exec-once = hyprctl setcursor volantes_cursors 32
       exec-once = dunst
 
       #source = /home/enzo/.config/hypr/colors
