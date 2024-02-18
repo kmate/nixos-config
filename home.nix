@@ -93,7 +93,7 @@
 
       #source = /home/enzo/.config/hypr/colors
       exec = pkill waybar & sleep 0.5 && waybar
-      exec-once = swww init & sleep 0.5 && swww img /home/km/repos/nixos-config/desktop/nix-wallpaper-recursive.png
+      exec-once = swww init & sleep 0.5 && swww img ${./desktop/wallpaper.jpg}
       # exec-once = wallpaper_random
 
       # Set en layout at startup

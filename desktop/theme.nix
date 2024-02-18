@@ -2,7 +2,7 @@
   gtk = {
     enable = true;
     iconTheme = {
-      name = "Yaru-blue-dark";
+      name = "Yaru-magenta-dark";
       package = pkgs.yaru-theme;
     };
 

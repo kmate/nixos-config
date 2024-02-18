@@ -11,19 +11,41 @@
       ensureProfiles = {
         environmentFiles = [config.sops.secrets."network-manager.env".path];
         profiles = {
-          "\${wifi.home.ssid}" = {
+          "wifi1" = {
             connection = {
-              id = "\${wifi.home.ssid}";
+              id = "\${WIFI1_SSID}";
               type = "wifi";
             };
             wifi = {
               mode = "infrastructure";
-              ssid = "\${wifi.home.ssid}";
+              ssid = "\$WIFI1_SSID";
             };
             wifi-security = {
               auth-alg = "open";
               key-mgmt = "wpa-psk";
-              psk = "\${wifi.home.psk}";
+              psk = "\$WIFI1_PSK";
+            };
+            ipv4 = {
+              method = "auto";
+            };
+            ipv6 = {
+              addr-gen-mode = "stable-privacy";
+              method = "auto";
+            };
+          };
+          "wifi2" = {
+            connection = {
+              id = "\$WIFI2_SSID";
+              type = "wifi";
+            };
+            wifi = {
+              mode = "infrastructure";
+              ssid = "\$WIFI2_SSID";
+            };
+            wifi-security = {
+              auth-alg = "open";
+              key-mgmt = "wpa-psk";
+              psk = "\$WIFI2_PSK";
             };
             ipv4 = {
               method = "auto";
