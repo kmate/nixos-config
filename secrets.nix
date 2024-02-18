@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     inputs.sops-nix.nixosModules.sops
   ];
@@ -14,7 +18,10 @@
     };
   };
 
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.gdm.enableGnomeKeyring = true;
   programs.seahorse.enable = true;
+  services = {
+    dbus.packages = [pkgs.gnome.seahorse];
+    gnome.gnome-keyring.enable = true;
+  };
+  security.pam.services.gdm.enableGnomeKeyring = true;
 }

@@ -25,6 +25,7 @@
         kitty
         dunst # TODO use mako?
         grim
+        networkmanagerapplet
         slurp
         wl-clipboard
         wlr-randr
@@ -35,9 +36,13 @@
       ])
       ++ (with pkgs.cinnamon; [
         nemo
+      ])
+      ++ (with pkgs.gnome; [
+        gnome-keyring
       ]);
 
     sessionVariables = {
+      SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/keyring/ssh";
       EDITOR = "vim";
       BROWSER = "google-chrome";
       TERMINAL = "kitty";
@@ -56,6 +61,11 @@
     stateVersion = "23.11";
   };
 
+  services.gnome-keyring = {
+    enable = true;
+    components = ["pkcs11" "secrets" "ssh"];
+  };
+
   programs = {
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
@@ -71,21 +81,17 @@
         st = "status";
       };
       extraConfig = {
-        credential.helper = "${pkgs.git.override {withLibsecret = true;}}/bin/git-credential-libsecret";
+        init.defaultBranch = "main";
       };
     };
 
     vscode.enable = true;
   };
 
-  # TODO cursor size!!
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
     extraConfig = ''
-      # Monitor
-      # monitor=DP-1,1920x1080@165,auto,1
-
       # Fix slow startup
       exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -97,9 +103,6 @@
       #source = /home/enzo/.config/hypr/colors
       exec = pkill waybar & sleep 0.5 && waybar
       exec-once = swww init & sleep 0.5 && swww img ${./desktop/wallpaper.jpg}
-      # exec-once = wallpaper_random
-
-      # Set en layout at startup
 
       # Input config
       input {
@@ -184,6 +187,9 @@
       bindm = $mainMod, mouse:272, movewindow
       bindm = $mainMod, mouse:273, resizewindow
       bindm = ALT, mouse:272, resizewindow
+
+      # Killing / closing things
+      bind = $mainMod, Q, killactive
 
       misc {
         disable_hyprland_logo = true
