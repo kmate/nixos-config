@@ -1,6 +1,17 @@
-{inputs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     inputs.hyprland.nixosModules.default
+  ];
+
+  security.pam.services.gtklock = {};
+
+  environment.systemPackages = with pkgs; [
+    gtklock
+    gtklock-powerbar-module
   ];
 
   services.greetd = {

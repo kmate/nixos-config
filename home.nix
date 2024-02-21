@@ -32,6 +32,7 @@
         pamixer
         waybar
         swww
+        swayidle
         volantes-cursors
       ])
       ++ (with pkgs.cinnamon; [
@@ -88,6 +89,18 @@
     vscode.enable = true;
   };
 
+  home.file.".swayidle" = let
+    # TODO it cannot turn off the screen for some reason - permissions?
+    #  the hyprctl command works when invoked directly from console
+    swayidleConfig = pkgs.writeText ".swayidle" ''
+      timeout 300 'gtklock -i -m ${pkgs.gtklock-powerbar-module.outPath}/lib/gtklock/powerbar-module.so'
+      timeout 600 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
+      before-sleep 'gtklock -i -m ${pkgs.gtklock-powerbar-module.outPath}/lib/gtklock/powerbar-module.so'
+    '';
+  in {
+    source = swayidleConfig;
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
@@ -99,10 +112,11 @@
       # Autostart
       exec-once = hyprctl setcursor volantes_cursors 32
       exec-once = dunst
+      exec-once = swww init & sleep 0.5 && swww img ${./desktop/wallpaper.jpg}
+      exec-once = swayidle -w -C ~/.swayidle
 
       #source = /home/enzo/.config/hypr/colors
       exec = pkill waybar & sleep 0.5 && waybar
-      exec-once = swww init & sleep 0.5 && swww img ${./desktop/wallpaper.jpg}
 
       # Input config
       input {
@@ -193,6 +207,8 @@
 
       misc {
         disable_hyprland_logo = true
+        key_press_enables_dpms = true
+        mouse_move_enables_dpms = true
       }
     '';
   };

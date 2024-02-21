@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
+    font-awesome
     twemoji-color-font
   ];
 
