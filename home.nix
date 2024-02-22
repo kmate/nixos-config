@@ -62,9 +62,12 @@
     stateVersion = "23.11";
   };
 
-  services.gnome-keyring = {
-    enable = true;
-    components = ["pkcs11" "secrets" "ssh"];
+  services = {
+    blueman-applet.enable = true;
+    gnome-keyring = {
+      enable = true;
+      components = ["pkcs11" "secrets" "ssh"];
+    };
   };
 
   programs = {

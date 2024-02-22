@@ -88,6 +88,7 @@
   nixpkgs.hostPlatform = lib.mkDefault system;
 
   hardware = {
+    bluetooth.enable = true;
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     opengl = {
       enable = true;
@@ -96,12 +97,20 @@
     pulseaudio.enable = false;
   };
 
-  sound.enable = true;
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
+
+  sound.enable = true;
+
+  services = {
+    blueman = {
+      enable = true;
+    };
+
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
   };
 }
