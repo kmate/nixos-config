@@ -7,6 +7,7 @@
       just
       sbctl
       sops
+      systemd
       tig
       tree
       usbutils

@@ -125,7 +125,7 @@
       # Input config
       input {
           kb_layout = us,hu
-          kb_variant =
+          kb_variant = ,101_qwerty_comma_nodead
           kb_model =
           kb_options = caps:escape
           kb_rules =
@@ -143,7 +143,7 @@
         workspace_swipe = true
         workspace_swipe_invert = false
         workspace_swipe_fingers = 3
-        workspace_swipe_distance = 1000
+        workspace_swipe_distance = 500
         workspace_swipe_cancel_ratio = 0.5
         workspace_swipe_min_speed_to_force = 10
         workspace_swipe_create_new = true
@@ -223,6 +223,20 @@
         disable_hyprland_logo = true
         key_press_enables_dpms = true
         mouse_move_enables_dpms = true
+      }
+
+      general {
+        gaps_in = 2
+        gaps_out = 2
+        gaps_workspaces = 0
+
+        resize_on_border = true
+        extend_border_grab_area = 20
+      }
+
+      decoration {
+        rounding = 2
+        dim_inactive = true
       }
     '';
   };
