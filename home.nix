@@ -107,6 +107,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
+
     extraConfig = ''
       # Fix slow startup
       exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -136,6 +137,16 @@
           }
 
           sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
+      }
+
+      gestures {
+        workspace_swipe = true
+        workspace_swipe_invert = false
+        workspace_swipe_fingers = 3
+        workspace_swipe_distance = 1000
+        workspace_swipe_cancel_ratio = 0.5
+        workspace_swipe_min_speed_to_force = 10
+        workspace_swipe_create_new = true
       }
 
       $mainMod = SUPER
