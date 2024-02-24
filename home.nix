@@ -16,10 +16,11 @@
       (with pkgs; [
         alejandra
         arduino-ide
+        brave
         jetbrains.idea-community
         slack
         skypeforlinux
-        transmission
+        transmission-qt
         vlc
         wine
         winetricks
@@ -71,6 +72,7 @@
       enable = true;
       components = ["pkcs11" "secrets" "ssh"];
     };
+    udiskie.enable = true;
   };
 
   programs = {
