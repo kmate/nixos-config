@@ -15,10 +15,12 @@
     packages =
       (with pkgs; [
         alejandra
-        btop
-        jq
-        silver-searcher
+        arduino-ide
+        jetbrains.idea-community
         slack
+        skypeforlinux
+        transmission
+        vlc
         wine
         winetricks
 
@@ -34,6 +36,7 @@
         swww
         swayidle
         volantes-cursors
+        wdisplays
       ])
       ++ (with pkgs.cinnamon; [
         nemo

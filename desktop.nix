@@ -14,14 +14,17 @@
     gtklock-powerbar-module
   ];
 
-  services.greetd = {
-    enable = true;
-    settings = {
-      initial_session = {
-        user = "km";
-        command = "$SHELL -l";
+  services = {
+    greetd = {
+      enable = true;
+      settings = {
+        initial_session = {
+          user = "km";
+          command = "$SHELL -l";
+        };
       };
     };
+    udisks2.enable = true;
   };
 
   programs = {
@@ -41,6 +44,11 @@
     enable = true;
     wlr.enable = true;
     config.common.default = "*"; # TODO check: is this what I want/need?
+
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+    ];
   };
 
   environment.variables = {
