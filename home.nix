@@ -44,6 +44,7 @@
         grim
         networkmanagerapplet
         slurp
+        libappindicator-gtk3 # for udiskie
         wl-clipboard
         wlr-randr
         pamixer
@@ -79,6 +80,8 @@
     # originally installed.
     stateVersion = "23.11";
   };
+
+  xsession.preferStatusNotifierItems = true; # for udiskie
 
   services = {
     blueman-applet.enable = true;
