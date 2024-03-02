@@ -42,6 +42,10 @@ Check if wdisplays works properly now
 - Use dunst or mako, whichever can be better configured & styled?
 - How to test it? (maybe through mounting, but a cli trigger would be preferred)
 
+## URL links
+
+Make clicking on URLs in e.g. VSCode and console work.
+
 ## Power button / options
 
 EWW could be used to create a power menu, add invocation to Waybar
@@ -50,6 +54,8 @@ EWW could be used to create a power menu, add invocation to Waybar
 
 Check options; see how can we change/display it on Waybar
 https://nixos.wiki/wiki/Laptop
+
+powerprofilesctl
 
 ## App launcher
 
