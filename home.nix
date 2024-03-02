@@ -48,7 +48,7 @@
         wl-clipboard
         wlr-randr
         pamixer
-        waybar
+        pavucontrol
         swww
         swayidle
         volantes-cursors
