@@ -74,6 +74,12 @@
         format = "{percent}% {icon}";
         format-icons = ["" "" "" "" "" "" "" "" ""];
       };
+      "hyprland/language" = {
+        format = "{}";
+        format-us = "us";
+        format-hu = "hu";
+        keyboard-name = "at-translated-set-2-keyboard";
+      };
       battery = {
         states = {
           # "good": 95,
