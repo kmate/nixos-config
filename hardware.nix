@@ -4,10 +4,13 @@
   lib,
   modulesPath,
   system,
+  inputs,
+  pkgs,
   ...
 }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen3
   ];
 
   boot = {
@@ -44,6 +47,7 @@
       '';
     };
     kernelModules = ["kvm-amd" "amdgpu"];
+    kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = [];
   };
 
@@ -112,5 +116,7 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
+
+    power-profiles-daemon.enable = true;
   };
 }
