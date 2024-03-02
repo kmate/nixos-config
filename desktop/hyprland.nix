@@ -9,10 +9,16 @@
       exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
       # Autostart
+      ## System utilities
       exec-once = hyprctl setcursor volantes_cursors 32
       exec-once = dunst
       exec-once = swww init & sleep 0.5 && swww img ${./wallpaper.jpg}
       exec-once = swayidle -w -C ~/.swayidle
+      ## Applications
+      exec-once = kitty
+      exec-once = google-chrome-stable
+      exec-once = code
+      exec-once = slack
 
       #source = /home/enzo/.config/hypr/colors
       exec = pkill waybar & sleep 0.5 && waybar
@@ -113,6 +119,11 @@
 
       # Killing / closing things
       bind = $mainMod, Q, killactive
+
+      windowrulev2 = workspace 1,class:(kitty)
+      windowrulev2 = workspace 2,class:(google-chrome)
+      windowrulev2 = workspace 3,class:(code-url-handler)
+      windowrulev2 = workspace 4,class:(Slack)
 
       misc {
         disable_hyprland_logo = true
