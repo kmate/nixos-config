@@ -40,6 +40,10 @@
           sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
       }
 
+      device:lenovo-thinkpad-laser-wireless-mouse {
+        sensitivity = -0.5
+      }
+
       gestures {
         workspace_swipe = true
         workspace_swipe_invert = false
