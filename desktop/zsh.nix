@@ -1,6 +1,10 @@
 {pkgs, ...}: {
   programs.zsh = {
     enable = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    enableCompletion = true;
+
     oh-my-zsh = {
       enable = true;
       theme = "refined";
@@ -8,10 +12,6 @@
         "git"
       ];
     };
-
-    enableAutosuggestions = true;
-    enableCompletion = true;
-    syntaxHighlighting.enable = true;
 
     plugins = [
       {
