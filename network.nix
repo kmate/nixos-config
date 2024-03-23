@@ -55,6 +55,28 @@
               method = "auto";
             };
           };
+          "wifi3" = {
+            connection = {
+              id = "\$WIFI3_SSID";
+              type = "wifi";
+            };
+            wifi = {
+              mode = "infrastructure";
+              ssid = "\$WIFI3_SSID";
+            };
+            wifi-security = {
+              auth-alg = "open";
+              key-mgmt = "wpa-psk";
+              psk = "\$WIFI3_PSK";
+            };
+            ipv4 = {
+              method = "auto";
+            };
+            ipv6 = {
+              addr-gen-mode = "stable-privacy";
+              method = "auto";
+            };
+          };
         };
       };
     };
