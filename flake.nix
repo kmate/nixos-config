@@ -121,6 +121,7 @@
     devShells.${system}.default = pkgs.mkShell {
       name = "nixos-flake-shell";
       shellHook = ''
+        zsh
         ${self.checks.${system}.pre-commit-check.shellHook}
       '';
     };
