@@ -73,8 +73,8 @@
       bind =,XF86MonBrightnessDown,exec,light -U 20
       bind =,XF86MonBrightnessUp,exec,light -A 20
       bind =,XF86AudioMute,exec,pamixer -t
-      bind =,XF86AudioLowerVolume,exec,pamixer -d 10
-      bind =,XF86AudioRaiseVolume,exec,pamixer -i 10
+      bind =,XF86AudioLowerVolume,exec,pamixer -d 5
+      bind =,XF86AudioRaiseVolume,exec,pamixer -i 5
       bind =,XF86AudioPlay,exec,playerctl play-pause
       bind =,XF86AudioPause,exec,playerctl play-pause
 
