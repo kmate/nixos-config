@@ -50,13 +50,6 @@ Make clicking on URLs in e.g. VSCode and console work.
 
 EWW could be used to create a power menu, add invocation to Waybar
 
-## Power management
-
-Check options; see how can we change/display it on Waybar
-https://nixos.wiki/wiki/Laptop
-
-powerprofilesctl
-
 ## App launcher
 
 Configure and/or replace https://github.com/Kirottu/anyrun; add more plugins?
@@ -88,17 +81,14 @@ and https://wiki.hyprland.org/0.20.0beta/Useful-Utilities/Screen-Sharing/
 
 ## Waybar
 
-Menus should open ot the top (e.g. see skype/slack)
+Menus should open on the top (e.g. see skype/slack)
 
 Show:
 - date/time with calendar dropdown
-- workspaces
-- keyboard language indicator
 - power menu icon / lock
 - battery & cpu/ram usage
-- network & bluetooth - nm-connection-editor, blueman-applet
+- network - nm-connection-editor on click
 - display settings - wdisplays
-- volume, mic - show mixer app on click?
 - notifications, tray, mounts
 
 Check https://wiki.gentoo.org/wiki/List_of_software_for_Waylandm
