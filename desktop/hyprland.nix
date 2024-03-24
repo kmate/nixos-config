@@ -61,7 +61,8 @@
       bind = $mainMod, F, exec, nemo
       bind = $mainMod, V, togglefloating,
       bind = $mainMod, R, exec, anyrun
-      # check hyprctl devices to get device name for keyboard
+
+      # Switch to the next keyboard layout
       bind = $mainMod, SPACE, exec, hyprctl switchxkblayout at-translated-set-2-keyboard next
 
       # Screenshot
