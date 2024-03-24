@@ -7,6 +7,9 @@
       height = 30; # Waybar height (to be removed for auto height)
       spacing = 4; # Gaps between modules (4px)
       modules-left = [
+        "cpu"
+        "memory"
+        "temperature"
         "hyprland/window"
       ];
       modules-center = [
@@ -16,9 +19,6 @@
         "idle_inhibitor"
         "pulseaudio"
         "network"
-        "cpu"
-        "memory"
-        "temperature"
         "backlight"
         "hyprland/language"
         "battery"
