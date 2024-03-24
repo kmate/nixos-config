@@ -8,6 +8,9 @@
     # Remove close window confirm
     confirm_os_window_close 0
 
+    # Keyboard mapping
+    map ctrl+shift+k clear_terminal to_cursor_scroll active
+
     # Font config
     font_family      jetbrains mono nerd font
     bold_font        jetbrains mono nerd font
