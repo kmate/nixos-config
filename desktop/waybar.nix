@@ -79,6 +79,7 @@
         format-en = "us"; # strange, but this is how it works
         format-hu = "hu";
         keyboard-name = "at-translated-set-2-keyboard";
+        on-click = "hyprctl switchxkblayout at-translated-set-2-keyboard next";
       };
       battery = {
         states = {
