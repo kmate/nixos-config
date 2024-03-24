@@ -76,7 +76,7 @@
       };
       "hyprland/language" = {
         format = "{}";
-        format-us = "us";
+        format-en = "us"; # strange, but this is how it works
         format-hu = "hu";
         keyboard-name = "at-translated-set-2-keyboard";
       };
