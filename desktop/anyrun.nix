@@ -1,6 +1,7 @@
 {
   inputs,
   system,
+  osConfig,
   ...
 }: {
   imports = [
@@ -11,10 +12,12 @@
     enable = true;
     config = {
       plugins = [
-        # An array of all the plugins you want, which either can be paths to the .so files, or their packages
         inputs.anyrun.packages.${system}.applications
-        # ./some_plugin.so
-        # "${inputs.anyrun.packages.${system}.anyrun-with-all-plugins}/lib/kidex"
+        inputs.anyrun-nixos-options.packages.${system}.default
+        "${inputs.anyrun.packages.${system}.anyrun-with-all-plugins}/lib/libkidex.so"
+        "${inputs.anyrun.packages.${system}.anyrun-with-all-plugins}/lib/librandr.so"
+        "${inputs.anyrun.packages.${system}.anyrun-with-all-plugins}/lib/librink.so"
+        "${inputs.anyrun.packages.${system}.anyrun-with-all-plugins}/lib/libsymbols.so"
       ];
       width = {fraction = 0.3;};
       hideIcons = false;
@@ -31,12 +34,20 @@
     #  }
     #'';
 
-    #extraConfigFiles."some-plugin.ron".text = ''
-    #  Config(
-    #    // for any other plugin
-    #    // this file will be put in ~/.config/anyrun/some-plugin.ron
-    #    // refer to docs of xdg.configFile for available options
-    #  )
-    #'';
+    extraConfigFiles."nixos-options.ron".text = let
+      nixos-options = osConfig.system.build.manual.optionsJSON + "/share/doc/nixos/options.json";
+      hm-options = inputs.home-manager.packages.${system}.docs-json + "/share/doc/home-manager/options.json";
+
+      options = builtins.toJSON {
+        ":nix" = [nixos-options];
+        ":hm" = [hm-options];
+        ":nall" = [nixos-options hm-options];
+      };
+    in ''
+      Config(
+          options: ${options},
+          max_entries: Some(10)
+      )
+    '';
   };
 }
