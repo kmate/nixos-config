@@ -12,6 +12,8 @@ Custom hungarian layout to have í and 0 at the same time:
 
 Huge space around quotes, especially after ' and " in non-monospace (default?) font (just in some cases).
 
+Some foreign language characters (mostly Asian) just don't render.
+
 ## XWayland
 
 Having 2x scale factor causes blur on lots of apps;
@@ -52,7 +54,7 @@ EWW could be used to create a power menu, add invocation to Waybar
 
 ## App launcher
 
-Configure and/or replace https://github.com/Kirottu/anyrun; add more plugins?
+Configure style - make it floating!
 
 ## Screen sharing (in Slack)
 
