@@ -100,6 +100,9 @@
       bind = $mainMod, 8, workspace, 8
       bind = $mainMod, 9, workspace, 9
       bind = $mainMod, 0, workspace, 10
+      # Switch workspaces with mainMod + arrows
+      bind = $mainMod SHIFT, right, workspace, +1
+      bind = $mainMod SHIFT, left, workspace, -1
 
       # Move active window to a workspace with mainMod + SHIFT + [0-9]
       bind = $mainMod SHIFT, 1, movetoworkspace, 1
@@ -112,6 +115,8 @@
       bind = $mainMod SHIFT, 8, movetoworkspace, 8
       bind = $mainMod SHIFT, 9, movetoworkspace, 9
       bind = $mainMod SHIFT, 0, movetoworkspace, 10
+      # Move active window to a new empty workspace
+      bind = $mainMod SHIFT, RETURN, movetoworkspace, empty
 
       # Scroll through existing workspaces with mainMod + scroll
       bind = $mainMod, mouse_down, workspace, e+1
