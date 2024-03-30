@@ -3,6 +3,11 @@
   lib,
   ...
 }: {
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+  };
+
   networking = {
     hostName = "x";
     useDHCP = lib.mkDefault true;
