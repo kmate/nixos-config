@@ -49,6 +49,7 @@
         wlr-randr
         pamixer
         pavucontrol
+        python3
         swww
         swayidle
         volantes-cursors
