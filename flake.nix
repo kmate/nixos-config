@@ -73,6 +73,7 @@
           ./fingerprint.nix
           ./fonts.nix
           ./desktop.nix
+          ./platformio.nix
           {
             time.timeZone = "Europe/Budapest";
             i18n = {
