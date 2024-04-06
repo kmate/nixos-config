@@ -98,6 +98,13 @@
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
 
+    direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+      nix-direnv.enable = true;
+    };
+
     git = {
       enable = true;
       userName = "kmate";
