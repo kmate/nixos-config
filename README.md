@@ -42,7 +42,7 @@ Check if wdisplays works properly now
 ## Notifications
 
 - Use dunst or mako, whichever can be better configured & styled?
-- How to test it? (maybe through mounting, but a cli trigger would be preferred)
+- Test it with `notify-send` from `libnotify`
 
 ## URL links
 
@@ -80,6 +80,7 @@ and https://wiki.hyprland.org/0.20.0beta/Useful-Utilities/Screen-Sharing/
 - Lock screen when moving mouse to top right corner?
 - Unlock requires an empty password before fingerprint - might be some PAM setting?
 - Turning off screen doesn’t work when invoked automatically by swayidle through Hyprland - permission issue?
+- Idle inhibitor doesn't seem to work on waybar - use hypridle?
 
 ## Waybar
 
