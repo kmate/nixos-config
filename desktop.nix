@@ -46,6 +46,7 @@
     config.common.default = "*"; # TODO check: is this what I want/need?
 
     extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
       xdg-desktop-portal-wlr
       xdg-desktop-portal-gtk
     ];
