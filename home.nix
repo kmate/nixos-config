@@ -29,7 +29,6 @@
     in
       (with pkgs; [
         alejandra
-        arduino-ide
         brave
         jetbrains.idea-community
         slack
@@ -49,7 +48,6 @@
         wlr-randr
         pamixer
         pavucontrol
-        python3
         swww
         swayidle
         volantes-cursors
