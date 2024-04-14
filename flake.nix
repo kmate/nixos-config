@@ -75,6 +75,7 @@
           ./fonts.nix
           ./desktop.nix
           ./platformio.nix
+          ./virtualization.nix
           home-manager.nixosModules.home-manager
           {
             home-manager = {
