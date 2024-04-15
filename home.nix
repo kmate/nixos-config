@@ -92,43 +92,8 @@
     udiskie.enable = true;
   };
 
-  programs = {
-    # Let Home Manager install and manage itself.
-    home-manager.enable = true;
-
-    direnv = {
-      enable = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
-      nix-direnv.enable = true;
-    };
-
-    git = {
-      enable = true;
-      userName = "kmate";
-      userEmail = "mtkarc@gmail.com";
-      aliases = {
-        br = "branch";
-        ci = "commit";
-        co = "checkout";
-        st = "status";
-      };
-      extraConfig = {
-        init.defaultBranch = "main";
-      };
-    };
-
-    vscode = {
-      enable = true;
-      userSettings = {
-        "files.trimFinalNewlines" = true;
-        "files.insertFinalNewline" = true;
-        "explorer.confirmDelete" = false;
-        "platformio-ide.useBuiltinPIOCore" = false;
-        "update.channel" = "none";
-      };
-    };
-  };
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
 
   home.file.".swayidle" = let
     # TODO it cannot turn off the screen for some reason - permissions?
