@@ -76,6 +76,7 @@
           ./desktop.nix
           ./platformio.nix
           ./virtualization.nix
+          ./dlna.nix
           home-manager.nixosModules.home-manager
           {
             home-manager = {
