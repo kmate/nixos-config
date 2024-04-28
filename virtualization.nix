@@ -4,7 +4,6 @@
       host.enable = true;
       guest = {
         enable = true;
-        x11 = true;
       };
     };
   };
