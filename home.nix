@@ -31,6 +31,10 @@
         alejandra
         brave
         jetbrains.idea-community
+        libreoffice-qt
+        hunspell
+        hunspellDicts.en_US
+        hunspellDicts.hu_HU
         slack
         skypeforlinux
         transmission-qt
