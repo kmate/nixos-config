@@ -14,22 +14,6 @@ Huge space around quotes, especially after ' and " in non-monospace (default?) f
 
 Some foreign language characters (mostly Asian) just don't render.
 
-## XWayland
-
-Having 2x scale factor causes blur on lots of apps;
-
-Apparently fractional scaling needs to be forcefully disabled
-https://discussion.fedoraproject.torg/t/blurry-xwayland-applications-using-2x-scaling-on-fedora-39/90419
-
-This might need glib:
-https://github.com/swaywm/sway/wiki/GTK-3-settings-on-Wayland
-
-```shell
-gsettings set org.gnome.mutter experimental-features "[]"
-```
-
-see also https://nixos.wiki/wiki/Sway on `gsettings`
-
 ## Printscreen
 
 - Figure out the current config, where does it save things, re-bind if needed
@@ -50,7 +34,9 @@ Make clicking on URLs in e.g. VSCode and console work.
 
 ## Power button / options
 
-EWW could be used to create a power menu, add invocation to Waybar
+EWW could be used to create a power menu, add invocation to Waybar?
+
+Also, wlogout might be a simple option.
 
 ## App launcher
 
@@ -71,7 +57,6 @@ and https://wiki.hyprland.org/0.20.0beta/Useful-Utilities/Screen-Sharing/
 ## Hyprland
 
 - Review key bindings, e.g. SUPER+SHIFT+ENTER should move current window into a separate workspace if it’s not on one already
-- Tweak look & feel; chose a better background before most probably
 - “Must have” list: https://wiki.hyprland.org/0.20.0beta/Useful-Utilities/Must-have/
 - Useful utils in general: https://wiki.hyprland.org/0.20.0beta/Useful-Utilities/
 
