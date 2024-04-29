@@ -5,8 +5,20 @@
 
     extraConfig = ''
       # Fix slow startup
-      exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-      exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+      exec = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+      exec = dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
+      # Change monitor to high resolution, the last argument is the scale factor
+      monitor=,highres,auto,2
+
+      # Unscale XWayland
+      xwayland {
+        force_zero_scaling = true
+      }
+
+      # Toolkit-specific scale
+      env = GDK_SCALE,2
+      env = XCURSOR_SIZE,32
 
       # Autostart
       ## System utilities
@@ -14,33 +26,33 @@
       exec-once = dunst
       exec-once = swww init & sleep 0.5 && swww img ${./wallpaper.jpg}
       exec-once = swayidle -w -C ~/.swayidle
+
       ## Applications
       exec-once = kitty
-      exec-once = google-chrome-stable
+      exec-once = google-chrome-stable --ozone-platform=wayland
       exec-once = code
       exec-once = slack
-
-      #source = /home/enzo/.config/hypr/colors
       exec = pkill waybar & sleep 0.5 && waybar
 
       # Input config
       input {
-          kb_layout = us,hu
-          kb_variant = ,101_qwerty_comma_nodead
-          kb_model =
-          kb_options = caps:escape
-          kb_rules =
+        kb_layout = us,hu
+        kb_variant = ,101_qwerty_comma_nodead
+        kb_model =
+        kb_options = caps:escape
+        kb_rules =
 
-          follow_mouse = 1
+        follow_mouse = 1
 
-          touchpad {
-              natural_scroll = false
-          }
+        touchpad {
+          natural_scroll = false
+        }
 
-          sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
+        sensitivity = 0
       }
 
-      device:lenovo-thinkpad-laser-wireless-mouse {
+      device {
+        name = lenovo-thinkpad-laser-wireless-mouse
         sensitivity = -0.5
       }
 
@@ -134,15 +146,29 @@
       # Killing / closing things
       bind = $mainMod, Q, killactive
 
+      # Window rules
+      windowrule = noblur,.*
+
       windowrulev2 = workspace 1,class:(kitty)
       windowrulev2 = workspace 2,class:(google-chrome)
       windowrulev2 = workspace 3,class:(code-url-handler)
       windowrulev2 = workspace 4,class:(Slack)
 
+      # Dialogs
+      windowrule = float,title:^(Open File)(.*)$
+      windowrule = float,title:^(Open Folder)(.*)$
+      windowrule = float,title:^(Select a File)(.*)$
+      windowrule = float,title:^(Save As)(.*)$
+      windowrule = float,title:^(Library)(.*)$
+      windowrule = float,title:(Volume Control)
+      windowrule = float,title:(Network Connections)
+      windowrule = float,title:(.blueman-manager-wrapped)
+
       misc {
         disable_hyprland_logo = true
         key_press_enables_dpms = true
         mouse_move_enables_dpms = true
+        vfr = true
       }
 
       general {
@@ -156,7 +182,8 @@
 
       decoration {
         rounding = 2
-        dim_inactive = true
+        dim_inactive = false
+        drop_shadow = false
       }
     '';
   };
