@@ -79,6 +79,12 @@
       XDG_SESSION_TYPE = "wayland";
     };
 
+    pointerCursor = {
+      package = pkgs.volantes-cursors;
+      name = "volantes_cursors";
+      size = 24;
+    };
+
     # The state version is required and should stay at the version you
     # originally installed.
     stateVersion = "23.11";
