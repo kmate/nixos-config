@@ -38,6 +38,7 @@
         slack
         skypeforlinux
         transmission-qt
+        visualvm
         vlc
         wine
         winetricks
