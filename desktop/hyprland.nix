@@ -68,6 +68,7 @@
 
       $mainMod = SUPER
       bind = $mainMod, G, fullscreen,
+      bind = ALT SHIFT, RETURN, fullscreen
       bind = $mainMod, RETURN, exec, kitty
       bind = $mainMod, M, exit,
       bind = $mainMod, F, exec, nemo
