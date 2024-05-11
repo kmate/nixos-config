@@ -30,11 +30,13 @@
       (with pkgs; [
         alejandra
         brave
-        jetbrains.idea-community
-        libreoffice-qt
+        graalvm-ce
         hunspell
         hunspellDicts.en_US
         hunspellDicts.hu_HU
+        jetbrains.idea-community
+        libreoffice-qt
+        sbt
         slack
         skypeforlinux
         transmission-qt
