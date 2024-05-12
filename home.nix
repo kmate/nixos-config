@@ -30,12 +30,15 @@
       (with pkgs; [
         alejandra
         brave
+        dive
+        docker-compose
         graalvm-ce
         hunspell
         hunspellDicts.en_US
         hunspellDicts.hu_HU
         jetbrains.idea-community
         libreoffice-qt
+        podman-tui
         sbt
         slack
         skypeforlinux

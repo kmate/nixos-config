@@ -1,12 +1,15 @@
 {
   virtualisation = {
-    docker = {
+    containers.enable = true;
+
+    oci-containers.backend = "podman";
+
+    podman = {
       enable = true;
-      storageDriver = "btrfs";
-      rootless = {
-        enable = true;
-        setSocketVariable = true;
-      };
+      autoPrune.enable = true;
+      dockerCompat = true;
+      dockerSocket.enable = true;
+      defaultNetwork.settings.dns_enabled = true;
     };
 
     virtualbox = {
@@ -17,6 +20,5 @@
 
   users.extraGroups = {
     vboxusers.members = ["km"];
-    docker.members = ["km"];
   };
 }
