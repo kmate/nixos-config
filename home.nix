@@ -115,8 +115,8 @@
     # TODO it cannot turn off the screen for some reason - permissions?
     #  the hyprctl command works when invoked directly from console
     swayidleConfig = pkgs.writeText ".swayidle" ''
-      timeout 300 'gtklock -i -m ${pkgs.gtklock-powerbar-module.outPath}/lib/gtklock/powerbar-module.so'
-      timeout 600 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
+      timeout 3000 'gtklock -i -m ${pkgs.gtklock-powerbar-module.outPath}/lib/gtklock/powerbar-module.so'
+      timeout 6000 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
       before-sleep 'gtklock -i -m ${pkgs.gtklock-powerbar-module.outPath}/lib/gtklock/powerbar-module.so'
     '';
   in {
