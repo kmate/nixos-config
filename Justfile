@@ -2,7 +2,7 @@ dev:
   nix develop
 
 check:
-  nix flake check --print-build-logs
+  nix flake check --print-build-logs --accept-flake-config
 
 fmt:
   nix fmt
@@ -11,13 +11,13 @@ secrets:
   sops secrets/secrets.yaml
 
 deploy:
-  nixos-rebuild switch --flake . --use-remote-sudo
+  nixos-rebuild switch --flake . --use-remote-sudo --accept-flake-config
 
 boot:
-  nixos-rebuild boot --flake . --use-remote-sudo
+  nixos-rebuild boot --flake . --use-remote-sudo --accept-flake-config
 
 debug:
-  nixos-rebuild switch --flake . --use-remote-sudo --show-trace --verbose
+  nixos-rebuild switch --flake . --use-remote-sudo --show-trace --verbose --accept-flake-config
 
 generations:
   ls -lah /nix/var/nix/profiles
