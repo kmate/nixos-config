@@ -10,7 +10,7 @@
 }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen3
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen4
   ];
 
   boot = {

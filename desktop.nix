@@ -35,6 +35,10 @@
         fi
       '';
     };
+    hyprland = {
+      enable = true;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    };
     light.enable = true;
     dconf.enable = true;
     regreet.enable = true;
@@ -46,7 +50,6 @@
     config.common.default = "*"; # TODO check: is this what I want/need?
 
     extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
       xdg-desktop-portal-wlr
       xdg-desktop-portal-gtk
     ];
