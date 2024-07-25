@@ -14,8 +14,9 @@
       plugins = [
         inputs.anyrun.packages.${system}.applications
         inputs.anyrun-nixos-options.packages.${system}.default
-        "${inputs.anyrun.packages.${system}.anyrun-with-all-plugins}/lib/libkidex.so"
-        "${inputs.anyrun.packages.${system}.anyrun-with-all-plugins}/lib/librandr.so"
+        # re-enable after https://github.com/anyrun-org/anyrun/pull/154 gets merged
+        # "${inputs.anyrun.packages.${system}.anyrun-with-all-plugins}/lib/libkidex.so"
+        # "${inputs.anyrun.packages.${system}.anyrun-with-all-plugins}/lib/librandr.so"
         "${inputs.anyrun.packages.${system}.anyrun-with-all-plugins}/lib/librink.so"
         "${inputs.anyrun.packages.${system}.anyrun-with-all-plugins}/lib/libsymbols.so"
       ];
