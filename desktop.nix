@@ -1,12 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
-  imports = [
-    inputs.hyprland.nixosModules.default
-  ];
-
+{pkgs, ...}: {
   security.pam.services.gtklock = {};
 
   environment.systemPackages = with pkgs; [
@@ -34,10 +26,6 @@
           WLR_NO_HARDWARE_CURSORS=1 Hyprland
         fi
       '';
-    };
-    hyprland = {
-      enable = true;
-      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     };
     light.enable = true;
     dconf.enable = true;
