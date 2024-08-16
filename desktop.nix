@@ -30,6 +30,7 @@
     light.enable = true;
     dconf.enable = true;
     regreet.enable = true;
+    xwayland.enable = true;
   };
 
   xdg.portal = {
