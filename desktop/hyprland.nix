@@ -25,8 +25,6 @@
       ## System utilities
       exec-once = hyprctl setcursor volantes_cursors 32
       exec-once = dunst
-      exec-once = swww init & sleep 0.5 && swww img ${./wallpaper.jpg}
-      exec-once = swayidle -w -C ~/.swayidle
 
       ## Applications
       exec-once = kitty
@@ -188,5 +186,101 @@
         drop_shadow = false
       }
     '';
+  };
+
+  services = {
+    hyprpaper = {
+      enable = true;
+
+      settings = {
+        ipc = "off";
+        splash = false;
+        preload = ["${./wallpaper.jpg}"];
+        wallpaper = [",${./wallpaper.jpg}"];
+      };
+    };
+
+    hypridle = {
+      enable = true;
+
+      settings = {
+        general = {
+          # avoid starting multiple hyprlock instances
+          lock_cmd = "pidof hyprlock || hyprlock";
+          # lock before suspend
+          before_sleep_cmd = "loginctl lock-session";
+          # to avoid having to press a key twice to turn on the display
+          after_sleep_cmd = "hyprctl dispatch dpms on";
+        };
+
+        listener = [
+          # dim monitor backlight after 2.5 mins
+          {
+            timeout = 150;
+            on-timeout = "light -O && light -S 10";
+            on-resume = "light -I";
+          }
+          # turn off keyboard backlight after 2.5 mins
+          {
+            timeout = 150;
+            on-timeout = "light -s sysfs/leds/tpacpi::kbd_backlight -O && light -s sysfs/leds/tpacpi::kbd_backlight -S 0";
+            on-resume = "light -s sysfs/leds/tpacpi::kbd_backlight -I";
+          }
+          # lock screen after 5 mins
+          {
+            timeout = 300;
+            on-timeout = "loginctl lock-session";
+          }
+          # turn off display after 5.5 mins
+          {
+            timeout = 330;
+            on-timeout = "hyprctl dispatch dpms off";
+            on-resume = "hyprctl dispatch dpms on";
+          }
+          # suspend after 10 mins
+          {
+            timeout = 600;
+            on-timeout = "systemctl suspend";
+          }
+        ];
+      };
+    };
+  };
+
+  programs.hyprlock = {
+    enable = true;
+
+    # TODO customize look
+    settings = {
+      general = {
+        disable_loading_bar = true;
+        hide_cursor = true;
+        grace = 5;
+      };
+
+      background = [
+        {
+          path = "${./wallpaper.jpg}";
+          blur_passes = 3;
+          blur_size = 8;
+        }
+      ];
+
+      input-field = [
+        {
+          size = "200, 50";
+          position = "0, -80";
+          monitor = "";
+          dots_center = true;
+          fade_on_empty = false;
+          font_color = "rgb(202, 211, 245)";
+          inner_color = "rgb(91, 96, 120)";
+          outer_color = "rgb(24, 25, 38)";
+          outline_thickness = 5;
+          placeholder_text = "'<span foreground=\"##cad3f5\">Password...</span>'";
+          shadow_passes = 2;
+        }
+      ];
+    };
   };
 }

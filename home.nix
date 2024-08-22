@@ -69,8 +69,6 @@
         wlr-randr
         pamixer
         pavucontrol
-        swww
-        swayidle
         volantes-cursors
         wdisplays
       ])
@@ -121,16 +119,4 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  home.file.".swayidle" = let
-    # TODO it cannot turn off the screen for some reason - permissions?
-    #  the hyprctl command works when invoked directly from console
-    swayidleConfig = pkgs.writeText ".swayidle" ''
-      timeout 3000 'gtklock -i -m ${pkgs.gtklock-powerbar-module.outPath}/lib/gtklock/powerbar-module.so'
-      timeout 6000 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
-      before-sleep 'gtklock -i -m ${pkgs.gtklock-powerbar-module.outPath}/lib/gtklock/powerbar-module.so'
-    '';
-  in {
-    source = swayidleConfig;
-  };
 }
