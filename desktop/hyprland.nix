@@ -18,6 +18,7 @@
 
       # Toolkit-specific scale
       env = GDK_SCALE,2
+      env = QT_AUTO_SCREEN_SCALE_FACTOR,auto
       env = XCURSOR_SIZE,24
 
       # Autostart
