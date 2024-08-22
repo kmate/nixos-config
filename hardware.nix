@@ -82,6 +82,7 @@
     "/boot" = {
       device = "/dev/disk/by-uuid/695C-D766";
       fsType = "vfat";
+      # options = ["umask=077"]; # TODO this might be needed to make boot more secure
     };
   };
 
