@@ -28,10 +28,6 @@ Check if wdisplays works properly now
 - Use dunst or mako, whichever can be better configured & styled?
 - Test it with `notify-send` from `libnotify`
 
-## URL links
-
-Make clicking on URLs in e.g. VSCode and console work.
-
 ## Power button / options
 
 EWW could be used to create a power menu, add invocation to Waybar?
@@ -64,8 +60,7 @@ and https://wiki.hyprland.org/0.20.0beta/Useful-Utilities/Screen-Sharing/
 
 - Lock screen when moving mouse to top right corner?
 - Unlock requires an empty password before fingerprint - might be some PAM setting?
-- Turning off screen doesn’t work when invoked automatically by swayidle through Hyprland - permission issue?
-- Idle inhibitor doesn't seem to work on waybar - use hypridle?
+- Idle inhibitor doesn't seem to work on waybar - retest with hypridle!
 
 ## Waybar
 
