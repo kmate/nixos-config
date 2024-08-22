@@ -28,6 +28,9 @@
     selection_foreground    #1E1E2E
     selection_background    #F5E0DC
 
+    # Opacity
+    background_opacity 0.9
+
     # Cursor colors
     cursor                  #F5E0DC
     cursor_text_color       #1E1E2E

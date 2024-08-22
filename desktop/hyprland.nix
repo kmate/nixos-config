@@ -178,6 +178,8 @@
 
         resize_on_border = true
         extend_border_grab_area = 20
+
+        col.active_border = rgb(ae2077) rgb(db1f83) rgb(213477) rgb(1da2eb) 45deg
       }
 
       decoration {
@@ -255,30 +257,43 @@
       general = {
         disable_loading_bar = true;
         hide_cursor = true;
+        no_fade_in = true;
         grace = 5;
       };
 
       background = [
         {
           path = "${./wallpaper.jpg}";
-          blur_passes = 3;
-          blur_size = 8;
+        }
+      ];
+
+      label = [
+        {
+          text = "cmd[update:1000] date +%H:%M:%S";
+          text_align = "center";
+          color = "rgba(200, 200, 200, 1.0)";
+          font_size = 25;
+          #font_family = Noto Sans
+
+          position = "0, 80";
+          halign = "center";
+          valign = "center";
         }
       ];
 
       input-field = [
         {
-          size = "200, 50";
-          position = "0, -80";
+          size = "300, 60";
           monitor = "";
           dots_center = true;
           fade_on_empty = false;
-          font_color = "rgb(202, 211, 245)";
-          inner_color = "rgb(91, 96, 120)";
-          outer_color = "rgb(24, 25, 38)";
-          outline_thickness = 5;
-          placeholder_text = "'<span foreground=\"##cad3f5\">Password...</span>'";
-          shadow_passes = 2;
+          font_color = "rgb(25, 134, 212)";
+          inner_color = "rgb(22, 18, 41)";
+          outer_color = "rgb(169, 52, 121)";
+          outline_thickness = 1;
+          placeholder_text = "";
+          rounding = 2;
+          shadow_passes = 0;
         }
       ];
     };

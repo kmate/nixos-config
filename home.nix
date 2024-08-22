@@ -59,6 +59,7 @@
         wine
         winetricks
 
+        hyprpicker
         kitty
         dunst # TODO use mako?
         grim
