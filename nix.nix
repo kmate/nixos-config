@@ -1,4 +1,8 @@
-{nixpkgs, ...}: {
+{
+  inputs,
+  nixpkgs,
+  ...
+}: {
   system.stateVersion = "23.11";
 
   nixpkgs.config.allowUnfree = true;
@@ -20,5 +24,18 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
+  };
+
+  system.autoUpgrade = {
+    enable = true;
+    flake = inputs.self.outPath;
+    flags = [
+      "--use-remote-sudo"
+      "--update-input"
+      "nixpkgs"
+      "-L" # print build logs
+    ];
+    dates = "13:00";
+    randomizedDelaySec = "45min";
   };
 }
