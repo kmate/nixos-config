@@ -81,6 +81,10 @@
       bind = , Print, exec, grim -g "$(slurp)" - | wl-copy
       bind = SHIFT, Print, exec, grim -g "$(slurp)"
 
+      # Color picker
+      bind = $mainMod, C, exec, hyprpicker --autocopy
+      bind = $mainMod SHIFT, C, exec, hyprpicker --autocopy --format=rgb
+
       # Functional keybinds
       bind =,XF86AudioMicMute,exec,pamixer --default-source -t
       bind =,XF86MonBrightnessDown,exec,light -U 20
