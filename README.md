@@ -58,13 +58,13 @@ and https://wiki.hyprland.org/0.20.0beta/Useful-Utilities/Screen-Sharing/
 
 ## Lock / turn off screen
 
-- Lock screen when moving mouse to top right corner?
-- Unlock requires an empty password before fingerprint - might be some PAM setting?
+- Lock screen when moving mouse to top right corner? (or add a button to waybar there!)
+- Unlock PAM looks to be random
+  - accepts only fingerprint when invoked from console
+  - otherwise, it only accepts the password
 - Idle inhibitor doesn't seem to work on waybar - retest with hypridle!
 
 ## Waybar
-
-Menus should open on the top (e.g. see skype/slack)
 
 Show:
 - date/time with calendar dropdown
