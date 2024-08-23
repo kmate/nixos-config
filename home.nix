@@ -43,6 +43,7 @@
         brave
         dive
         docker-compose
+        fastfetch
         graalvm-ce
         hunspell
         hunspellDicts.en_US
