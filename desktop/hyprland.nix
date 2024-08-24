@@ -77,8 +77,7 @@
       bind = $mainMod, SPACE, exec, hyprctl switchxkblayout at-translated-set-2-keyboard next
 
       # Screenshot
-      bind = , Print, exec, grim -g "$(slurp -d)" - | wl-copy
-      bind = SHIFT, Print, exec, grim -g "$(slurp -d)"
+      bind = , Print, exec, grim -g "$(slurp -d)" - | swappy -f -
 
       # Color picker
       bind = $mainMod, C, exec, hyprpicker --autocopy

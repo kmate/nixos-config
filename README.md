@@ -14,10 +14,6 @@ Huge space around quotes, especially after ' and " in non-monospace (default?) f
 
 Some foreign language characters (mostly Asian) just don't render.
 
-## Printscreen
-
-- Try flameshot or swappy to improve current setup?
-
 ## Display mounting
 
 Check if wdisplays works properly now

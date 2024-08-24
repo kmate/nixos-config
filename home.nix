@@ -65,6 +65,7 @@
         grim
         networkmanagerapplet
         slurp
+        swappy
         libappindicator-gtk3 # for udiskie
         wl-clipboard
         wlr-randr
