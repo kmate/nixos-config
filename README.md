@@ -62,7 +62,6 @@ and https://wiki.hyprland.org/0.20.0beta/Useful-Utilities/Screen-Sharing/
 - Unlock PAM looks to be random
   - accepts only fingerprint when invoked from console
   - otherwise, it only accepts the password
-- Idle inhibitor doesn't seem to work on waybar - retest with hypridle!
 
 ## Waybar
 
