@@ -24,7 +24,6 @@
       # Autostart
       ## System utilities
       exec-once = hyprctl setcursor volantes_cursors 32
-      exec-once = dunst
 
       ## Applications
       exec-once = kitty
@@ -195,6 +194,49 @@
   };
 
   services = {
+    dunst = {
+      enable = true;
+
+      # tries to mimic Tokyonight-Dark-B-LB
+      settings = {
+        global = {
+          layout = "overlay";
+          width = "(0, 300)";
+          height = 100;
+          offset = "5x5";
+
+          font = "sans-serif 9";
+          background = "#1F2231";
+          foreground = "#C0CAF5";
+          highlight = "#27A1B9";
+          frame_color = "#27A1B9";
+          frame_width = 2;
+          separator_color = "#323648";
+          separator_height = 1;
+          horizontal_padding = 12;
+          padding = 12;
+          corner_radius = 12;
+          markup = "full";
+        };
+
+        urgency_low = {
+          frame_color = "#8166a0";
+          highlight = "#8166a0";
+          timeout = 10;
+        };
+
+        urgency_normal = {
+          timeout = 15;
+        };
+
+        urgency_critical = {
+          frame_color = "#d20065";
+          highlight = "#d20065";
+          timeout = 0;
+        };
+      };
+    };
+
     hyprpaper = {
       enable = true;
 

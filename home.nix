@@ -62,7 +62,6 @@
 
         hyprpicker
         kitty
-        dunst # TODO use mako?
         grim
         networkmanagerapplet
         slurp
