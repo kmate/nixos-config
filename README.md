@@ -61,7 +61,7 @@ and https://wiki.hyprland.org/0.20.0beta/Useful-Utilities/Screen-Sharing/
 - Lock screen when moving mouse to top right corner? (or add a button to waybar there!)
 - Unlock PAM looks to be random
   - accepts only fingerprint when invoked from console
-  - otherwise, it only accepts the password
+  - otherwise, it only accepts the password first, and attempts to use fingerprint after a failed password
 
 ## Waybar
 
