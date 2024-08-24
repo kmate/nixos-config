@@ -44,6 +44,7 @@
         dive
         docker-compose
         fastfetch
+        font-manager
         graalvm-ce
         hunspell
         hunspellDicts.en_US
