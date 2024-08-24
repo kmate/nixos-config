@@ -8,12 +8,6 @@ Custom hungarian layout to have í and 0 at the same time:
 - https://nixos.wiki/wiki/Keyboard_Layout_Customization
 - https://wiki.archlinux.org/title/Xorg/Keyboard_configuration
 
-## Fonts
-
-Huge space around quotes, especially after ' and " in non-monospace (default?) font (just in some cases).
-
-Some foreign language characters (mostly Asian) just don't render.
-
 ## Display mounting
 
 Check if wdisplays works properly now
