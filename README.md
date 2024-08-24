@@ -16,17 +16,11 @@ Some foreign language characters (mostly Asian) just don't render.
 
 ## Printscreen
 
-- Figure out the current config, where does it save things, re-bind if needed
-- Check swappy etc. on https://wiki.gentoo.org/wiki/List_of_software_for_Wayland
+- Try flameshot or swappy to improve current setup?
 
 ## Display mounting
 
 Check if wdisplays works properly now
-
-## Notifications
-
-- Use dunst or mako, whichever can be better configured & styled?
-- Test it with `notify-send` from `libnotify`
 
 ## Power button / options
 
@@ -53,8 +47,6 @@ and https://wiki.hyprland.org/0.20.0beta/Useful-Utilities/Screen-Sharing/
 ## Hyprland
 
 - Review key bindings, e.g. SUPER+SHIFT+ENTER should move current window into a separate workspace if it’s not on one already
-- “Must have” list: https://wiki.hyprland.org/0.20.0beta/Useful-Utilities/Must-have/
-- Useful utils in general: https://wiki.hyprland.org/0.20.0beta/Useful-Utilities/
 
 ## Lock / turn off screen
 
@@ -62,6 +54,7 @@ and https://wiki.hyprland.org/0.20.0beta/Useful-Utilities/Screen-Sharing/
 - Unlock PAM looks to be random
   - accepts only fingerprint when invoked from console
   - otherwise, it only accepts the password first, and attempts to use fingerprint after a failed password
+- Tune the look (colors, clock font / position, etc.)
 
 ## Waybar
 
@@ -73,7 +66,7 @@ Show:
 - display settings - wdisplays
 - notifications, tray, mounts
 
-Check https://wiki.gentoo.org/wiki/List_of_software_for_Waylandm
+Check https://wiki.gentoo.org/wiki/List_of_software_for_Wayland
 
 ------
 
