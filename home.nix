@@ -45,6 +45,7 @@
         docker-compose
         fastfetch
         font-manager
+        gimp
         graalvm-ce
         hunspell
         hunspellDicts.en_US
@@ -79,6 +80,7 @@
         nemo
       ])
       ++ (with pkgs.gnome; [
+        file-roller
         gnome-keyring
       ]);
 
