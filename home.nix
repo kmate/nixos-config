@@ -56,7 +56,7 @@
         sbt
         slack
         skypeforlinux
-        transmission-qt
+        transmission_4-gtk
         visualvm
         vlc
         wine
