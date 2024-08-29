@@ -20,6 +20,8 @@
         "${inputs.anyrun.packages.${system}.anyrun-with-all-plugins}/lib/librink.so"
         "${inputs.anyrun.packages.${system}.anyrun-with-all-plugins}/lib/libsymbols.so"
       ];
+      x = {fraction = 0.5;};
+      y = {fraction = 0.3;};
       width = {fraction = 0.3;};
       hideIcons = false;
       ignoreExclusiveZones = false;
@@ -29,11 +31,15 @@
       showResultsImmediately = false;
       maxEntries = null;
     };
-    #extraCss = ''
-    #  .some_class {
-    #    background: red;
-    #  }
-    #'';
+    extraCss = ''
+      window {
+        background: rgba(0, 0, 0, 0.3);
+      }
+
+      #entry {
+        background-color: #1F2231;
+      }
+    '';
 
     extraConfigFiles."nixos-options.ron".text = let
       nixos-options = osConfig.system.build.manual.optionsJSON + "/share/doc/nixos/options.json";
