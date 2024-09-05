@@ -11,6 +11,14 @@
   networking = {
     hostName = "x";
     useDHCP = lib.mkDefault true;
+
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [
+        8266 # allows OTA uploads for ESP
+      ];
+    };
+
     networkmanager = {
       enable = true;
       ensureProfiles = {
