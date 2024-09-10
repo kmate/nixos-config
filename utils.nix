@@ -18,6 +18,7 @@
       util-linux
       vim
       wget
+      zip
     ];
     variables.EDITOR = "vim";
   };
