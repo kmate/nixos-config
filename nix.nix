@@ -1,5 +1,5 @@
 {
-  inputs,
+  #inputs,
   nixpkgs,
   ...
 }: {
@@ -26,16 +26,16 @@
     ];
   };
 
-  system.autoUpgrade = {
-    enable = true;
-    flake = inputs.self.outPath;
-    flags = [
-      "--use-remote-sudo"
-      "--update-input"
-      "nixpkgs"
-      "-L" # print build logs
-    ];
-    dates = "13:00";
-    randomizedDelaySec = "45min";
-  };
+  #system.autoUpgrade = {
+  #  enable = true;
+  #  flake = inputs.self.outPath;
+  #  flags = [
+  #    "--use-remote-sudo"
+  #    "--update-input"
+  #    "nixpkgs"
+  #    "-L" # print build logs
+  #  ];
+  #  dates = "13:00";
+  #  randomizedDelaySec = "45min";
+  #};
 }
