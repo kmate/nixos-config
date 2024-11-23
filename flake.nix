@@ -72,6 +72,7 @@
           ./platformio.nix
           ./virtualization.nix
           ./dlna.nix
+          ./steam.nix
           home-manager.nixosModules.home-manager
           {
             home-manager = {
