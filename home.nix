@@ -52,11 +52,14 @@
         hunspellDicts.hu_HU
         jetbrains.idea-community
         libreoffice-qt
+        p7zip
         podman-tui
         sbt
         slack
         skypeforlinux
         transmission_4-gtk
+        unrar
+        unzip
         visualvm
         vlc
         wine
