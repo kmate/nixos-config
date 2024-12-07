@@ -104,8 +104,6 @@
 
   security.rtkit.enable = true;
 
-  sound.enable = true;
-
   services = {
     blueman = {
       enable = true;
