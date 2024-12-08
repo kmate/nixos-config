@@ -54,6 +54,7 @@
         libreoffice-qt
         p7zip
         podman-tui
+        pwgen
         rclone
         sbt
         slack
