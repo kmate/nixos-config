@@ -153,7 +153,7 @@
 
       windowrulev2 = workspace 1,class:(kitty)
       windowrulev2 = workspace 2,class:(google-chrome)
-      windowrulev2 = workspace 3,class:(code-url-handler)
+      windowrulev2 = workspace 3,class:(code)
       windowrulev2 = workspace 4,class:(Slack)
 
       # Dialogs
@@ -187,7 +187,6 @@
       decoration {
         rounding = 2
         dim_inactive = false
-        drop_shadow = false
       }
     '';
   };
