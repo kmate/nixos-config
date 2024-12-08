@@ -20,7 +20,7 @@
 
   programs.seahorse.enable = true;
   services = {
-    dbus.packages = [pkgs.gnome.seahorse];
+    dbus.packages = [pkgs.seahorse];
     gnome.gnome-keyring.enable = true;
   };
   security.pam.services.gdm.enableGnomeKeyring = true;

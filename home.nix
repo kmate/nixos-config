@@ -38,22 +38,27 @@
         '';
       };
     in
-      (with pkgs; [
+      with pkgs; [
         alejandra
         brave
         dive
         docker-compose
         fastfetch
+        file-roller
         font-manager
         gimp
+        gnome-keyring
         graalvm-ce
         hunspell
         hunspellDicts.en_US
         hunspellDicts.hu_HU
         jetbrains.idea-community
         libreoffice-qt
+        nemo
+        ngrok
         p7zip
         podman-tui
+        postman
         pwgen
         rclone
         sbt
@@ -80,14 +85,7 @@
         pavucontrol
         volantes-cursors
         wdisplays
-      ])
-      ++ (with pkgs.cinnamon; [
-        nemo
-      ])
-      ++ (with pkgs.gnome; [
-        file-roller
-        gnome-keyring
-      ]);
+      ];
 
     sessionVariables = {
       SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/keyring/ssh";
