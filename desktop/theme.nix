@@ -7,8 +7,12 @@
     };
 
     theme = {
-      name = "Tokyonight-Dark-B-LB";
-      package = pkgs.tokyo-night-gtk;
+      name = "Tokyonight-Dark-Compact";
+      package = pkgs.tokyonight-gtk-theme.override {
+        colorVariants = ["dark"];
+        sizeVariants = ["compact"];
+        themeVariants = ["default"];
+      };
     };
 
     cursorTheme = {
