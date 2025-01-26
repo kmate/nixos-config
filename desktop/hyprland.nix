@@ -165,6 +165,7 @@
       windowrule = float,title:(Volume Control)
       windowrule = float,title:(Network Connections)
       windowrule = float,title:(.blueman-manager-wrapped)
+      windowrulev2 = float,class:nemo,title:( Properties)$
 
       misc {
         disable_hyprland_logo = true
