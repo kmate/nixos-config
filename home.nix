@@ -52,10 +52,12 @@
         hunspell
         hunspellDicts.en_US
         hunspellDicts.hu_HU
+        inkscape-with-extensions
         jetbrains.idea-community
         libreoffice-qt
         nemo
         ngrok
+        nodejs
         p7zip
         podman-tui
         postman
