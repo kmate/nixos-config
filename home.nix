@@ -65,7 +65,6 @@
         rclone
         sbt
         slack
-        skypeforlinux
         transmission_4-gtk
         unrar
         unzip
