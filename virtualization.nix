@@ -14,7 +14,7 @@
 
     virtualbox = {
       host.enable = true;
-      #guest.enable = true;
+      guest.enable = true;
     };
   };
 
