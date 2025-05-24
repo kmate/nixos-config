@@ -61,6 +61,7 @@
         p7zip
         podman-tui
         postman
+        prusa-slicer
         pwgen
         rclone
         sbt
