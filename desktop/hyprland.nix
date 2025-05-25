@@ -149,12 +149,12 @@
       bind = $mainMod, Q, killactive
 
       # Window rules
-      windowrule = noblur,.*
+      windowrule = noblur,title:(.*)
 
-      windowrulev2 = workspace 1,class:(kitty)
-      windowrulev2 = workspace 2,class:(google-chrome)
-      windowrulev2 = workspace 3,class:(code)
-      windowrulev2 = workspace 4,class:(Slack)
+      windowrule = workspace 1,class:(kitty)
+      windowrule = workspace 2,class:(google-chrome)
+      windowrule = workspace 3,class:(code)
+      windowrule = workspace 4,class:(Slack)
 
       # Dialogs
       windowrule = float,title:^(Open File)(.*)$
@@ -165,7 +165,7 @@
       windowrule = float,title:(Volume Control)
       windowrule = float,title:(Network Connections)
       windowrule = float,title:(.blueman-manager-wrapped)
-      windowrulev2 = float,class:nemo,title:( Properties)$
+      windowrule = float,class:nemo,title:( Properties)$
 
       misc {
         disable_hyprland_logo = true
