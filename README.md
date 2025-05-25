@@ -18,10 +18,6 @@ EWW could be used to create a power menu, add invocation to Waybar?
 
 Also, wlogout might be a simple option.
 
-## App launcher
-
-Configure style - make it floating!
-
 ## Screen sharing (in Slack)
 
 Slack screen sharing needs tweak (XWayland), potentially:
