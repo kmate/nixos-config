@@ -1,7 +1,7 @@
 {
   programs.vscode = {
     enable = true;
-    userSettings = {
+    profiles.default.userSettings = {
       "files.trimFinalNewlines" = true;
       "files.insertFinalNewline" = true;
       "explorer.confirmDelete" = false;

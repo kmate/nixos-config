@@ -99,7 +99,6 @@
       enable = true;
       enable32Bit = true;
     };
-    pulseaudio.enable = false;
   };
 
   security.rtkit.enable = true;
@@ -115,6 +114,8 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
+
+    pulseaudio.enable = false;
 
     tlp = {
       enable = true;
