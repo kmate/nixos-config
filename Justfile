@@ -11,13 +11,13 @@ secrets:
   sops secrets/secrets.yaml
 
 deploy:
-  nixos-rebuild switch --flake . --use-remote-sudo
+  nixos-rebuild switch --flake .#x --use-remote-sudo
 
 boot:
-  nixos-rebuild boot --flake . --use-remote-sudo
+  nixos-rebuild boot --flake .#x --use-remote-sudo
 
 debug:
-  nixos-rebuild switch --flake . --use-remote-sudo --show-trace --verbose
+  nixos-rebuild switch --flake .#x --use-remote-sudo --show-trace --verbose
 
 generations:
   ls -lah /nix/var/nix/profiles
