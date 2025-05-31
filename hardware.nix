@@ -53,34 +53,34 @@
 
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/ab27b4ac-0e1e-4d71-975d-e3d4526eacd1";
+      device = "/dev/disk/by-uuid/26e77c91-a17d-4d0e-8484-f8f7befb1ef4";
       fsType = "btrfs";
       options = ["subvol=root" "compress=zstd" "noatime"];
     };
     "/home" = {
-      device = "/dev/disk/by-uuid/ab27b4ac-0e1e-4d71-975d-e3d4526eacd1";
+      device = "/dev/disk/by-uuid/26e77c91-a17d-4d0e-8484-f8f7befb1ef4";
       fsType = "btrfs";
       options = ["subvol=home" "compress=zstd" "noatime"];
     };
     "/nix" = {
-      device = "/dev/disk/by-uuid/ab27b4ac-0e1e-4d71-975d-e3d4526eacd1";
+      device = "/dev/disk/by-uuid/26e77c91-a17d-4d0e-8484-f8f7befb1ef4";
       fsType = "btrfs";
       options = ["subvol=nix" "compress=zstd" "noatime"];
     };
     "/persist" = {
-      device = "/dev/disk/by-uuid/ab27b4ac-0e1e-4d71-975d-e3d4526eacd1";
+      device = "/dev/disk/by-uuid/26e77c91-a17d-4d0e-8484-f8f7befb1ef4";
       fsType = "btrfs";
       options = ["subvol=persist" "compress=zstd" "noatime"];
       neededForBoot = true;
     };
     "/var/log" = {
-      device = "/dev/disk/by-uuid/ab27b4ac-0e1e-4d71-975d-e3d4526eacd1";
+      device = "/dev/disk/by-uuid/26e77c91-a17d-4d0e-8484-f8f7befb1ef4";
       fsType = "btrfs";
       options = ["subvol=log" "compress=zstd" "noatime"];
       neededForBoot = true;
     };
     "/boot" = {
-      device = "/dev/disk/by-uuid/695C-D766";
+      device = "/dev/disk/by-uuid/3943-5FD7";
       fsType = "vfat";
       # options = ["umask=077"]; # TODO this might be needed to make boot more secure
     };
