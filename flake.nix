@@ -59,6 +59,7 @@
         modules = [
           ./nix.nix
           ./hardware.nix
+          #./boot.nix - enable if needed to disable secure boot, e.g. on reinstall
           ./secureboot.nix
           ./impermanence.nix
           ./secrets.nix
