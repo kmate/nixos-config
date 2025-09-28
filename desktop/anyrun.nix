@@ -2,18 +2,18 @@
   inputs,
   system,
   osConfig,
+  pkgs,
   ...
 }: {
   programs.anyrun = {
     enable = true;
     config = {
       plugins = [
-        inputs.anyrun.packages.${system}.applications
         inputs.anyrun-nixos-options.packages.${system}.default
-        "${inputs.anyrun.packages.${system}.anyrun-with-all-plugins}/lib/libkidex.so"
-        "${inputs.anyrun.packages.${system}.anyrun-with-all-plugins}/lib/librandr.so"
-        "${inputs.anyrun.packages.${system}.anyrun-with-all-plugins}/lib/librink.so"
-        "${inputs.anyrun.packages.${system}.anyrun-with-all-plugins}/lib/libsymbols.so"
+        "${pkgs.anyrun}/lib/libkidex.so"
+        "${pkgs.anyrun}/lib/libapplications.so"
+        "${pkgs.anyrun}/lib/librink.so"
+        "${pkgs.anyrun}/lib/libsymbols.so"
       ];
       x = {fraction = 0.5;};
       y = {fraction = 0.3;};
