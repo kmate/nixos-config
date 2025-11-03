@@ -37,6 +37,14 @@
             --replace-fail Exec=${pkgs.vlc}/bin/vlc Exec=$out/bin/vlc
         '';
       };
+      # LICENSE.txt conflicts with other packages
+      orca-slicer = pkgs.orca-slicer.overrideAttrs (oldAttrs: {
+        postInstall =
+          oldAttrs.postInstall or ""
+          + ''
+            rm -f $out/LICENSE.txt
+          '';
+      });
     in
       with pkgs; [
         alejandra
@@ -58,10 +66,10 @@
         nemo
         ngrok
         nodejs
+        orca-slicer
         p7zip
         podman-tui
         postman
-        prusa-slicer
         pwgen
         rclone
         sbt
