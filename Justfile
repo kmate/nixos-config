@@ -11,13 +11,13 @@ secrets:
   sops secrets/secrets.yaml
 
 deploy:
-  nixos-rebuild switch --flake .#x --use-remote-sudo
+  nixos-rebuild switch --flake .#x --sudo
 
 boot:
-  nixos-rebuild boot --flake .#x --use-remote-sudo
+  nixos-rebuild boot --flake .#x --sudo
 
 debug:
-  nixos-rebuild switch --flake .#x --use-remote-sudo --show-trace --verbose
+  nixos-rebuild switch --flake .#x --sudo --show-trace --verbose
 
 generations:
   ls -lah /nix/var/nix/profiles
@@ -38,7 +38,7 @@ repl:
 
 clean:
   # remove all generations older than 7 days
-  sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d
+  sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than 7d
 
 gc:
   # garbage collect all unused nix store entries
