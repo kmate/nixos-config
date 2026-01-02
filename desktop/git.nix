@@ -1,15 +1,17 @@
 {
   programs.git = {
     enable = true;
-    userName = "kmate";
-    userEmail = "mtkarc@gmail.com";
-    aliases = {
-      br = "branch";
-      ci = "commit";
-      co = "checkout";
-      st = "status";
-    };
-    extraConfig = {
+    settings = {
+      user = {
+        name = "kmate";
+        email = "mtkarc@gmail.com";
+      };
+      alias = {
+        br = "branch";
+        ci = "commit";
+        co = "checkout";
+        st = "status";
+      };
       init.defaultBranch = "main";
     };
   };

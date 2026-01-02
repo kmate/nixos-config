@@ -9,7 +9,7 @@
       # icon fonts
       material-design-icons
       font-awesome
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       source-sans
       source-serif
       source-han-sans

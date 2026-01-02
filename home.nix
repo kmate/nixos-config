@@ -56,12 +56,12 @@
         font-manager
         gimp
         gnome-keyring
-        graalvm-ce
+        graalvmPackages.graalvm-ce
         hunspell
         hunspellDicts.en_US
         hunspellDicts.hu_HU
         inkscape-with-extensions
-        jetbrains.idea-community
+        jetbrains.idea-oss
         libreoffice-qt
         nemo
         ngrok
