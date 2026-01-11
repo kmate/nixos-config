@@ -53,28 +53,28 @@
 
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/ce6453df-6dd9-4694-8bcb-102dfe5f23d4";
+      device = "/dev/disk/by-uuid/c35314c9-811a-4b15-b1d8-b2b2a29ea838";
       fsType = "btrfs";
       options = ["subvol=root" "compress=zstd" "noatime"];
     };
     "/home" = {
-      device = "/dev/disk/by-uuid/ce6453df-6dd9-4694-8bcb-102dfe5f23d4";
+      device = "/dev/disk/by-uuid/c35314c9-811a-4b15-b1d8-b2b2a29ea838";
       fsType = "btrfs";
       options = ["subvol=home" "compress=zstd" "noatime"];
     };
     "/nix" = {
-      device = "/dev/disk/by-uuid/ce6453df-6dd9-4694-8bcb-102dfe5f23d4";
+      device = "/dev/disk/by-uuid/c35314c9-811a-4b15-b1d8-b2b2a29ea838";
       fsType = "btrfs";
       options = ["subvol=nix" "compress=zstd" "noatime"];
     };
     "/persist" = {
-      device = "/dev/disk/by-uuid/ce6453df-6dd9-4694-8bcb-102dfe5f23d4";
+      device = "/dev/disk/by-uuid/c35314c9-811a-4b15-b1d8-b2b2a29ea838";
       fsType = "btrfs";
       options = ["subvol=persist" "compress=zstd" "noatime"];
       neededForBoot = true;
     };
     "/var/log" = {
-      device = "/dev/disk/by-uuid/ce6453df-6dd9-4694-8bcb-102dfe5f23d4";
+      device = "/dev/disk/by-uuid/c35314c9-811a-4b15-b1d8-b2b2a29ea838";
       fsType = "btrfs";
       options = ["subvol=log" "compress=zstd" "noatime"];
       neededForBoot = true;
@@ -87,7 +87,7 @@
   };
 
   swapDevices = [
-    {device = "/dev/disk/by-uuid/1d74b5ff-41ff-4b4a-96db-259e6d5ff100";}
+    {device = "/dev/disk/by-uuid/14b2d361-9a84-4eff-8ffe-c8f33a40e769";}
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault system;
