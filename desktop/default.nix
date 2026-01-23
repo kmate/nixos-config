@@ -6,6 +6,7 @@
     ./git.nix
     ./hyprland.nix
     ./kitty.nix
+    ./opencode.nix
     ./theme.nix
     ./vscode.nix
     ./waybar.nix
