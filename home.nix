@@ -81,6 +81,10 @@
         vlc
         wine
         winetricks
+        zig
+        zig-zlint
+        zls
+        zon2nix
 
         hyprpicker
         kitty
