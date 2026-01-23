@@ -98,7 +98,7 @@
       ];
 
     sessionVariables = {
-      SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/keyring/ssh";
+      SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/gcr/ssh";
       EDITOR = "vim";
       BROWSER = "google-chrome";
       TERMINAL = "kitty";
