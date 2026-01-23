@@ -37,6 +37,8 @@
       url = "github:n3oney/anyrun-nixos-options";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    opencode.url = "github:anomalyco/opencode";
   };
 
   outputs = {

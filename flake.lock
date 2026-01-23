@@ -344,6 +344,40 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1768875095,
+        "narHash": "sha256-dYP3DjiL7oIiiq3H65tGIXXIT1Waiadmv93JS0sS+8A=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ed142ab1b3a092c4d149245d0c4126a5d7ea00b0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "opencode": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1769191179,
+        "narHash": "sha256-/cS5fhbjs6tZk3hLKEky130wzcyNUmUX4XMtOftn09k=",
+        "owner": "anomalyco",
+        "repo": "opencode",
+        "rev": "225b72ca36da50467b35a8de7d16a9fc27f38bcf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "anomalyco",
+        "repo": "opencode",
+        "type": "github"
+      }
+    },
     "pre-commit": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -398,6 +432,7 @@
         "lanzaboote": "lanzaboote",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
+        "opencode": "opencode",
         "pre-commit-hooks": "pre-commit-hooks",
         "sops-nix": "sops-nix"
       }
