@@ -51,19 +51,42 @@
         "14=#94E2D5"
         "15=#A6ADC8"
       ];
+
+      # Keybinds (iTerm2-like)
+      keybind = [
+        # Ignore arrow key combinations to prevent unwanted sequences
+        "ctrl+shift+alt+left=ignore"
+        "ctrl+shift+alt+right=ignore"
+        "ctrl+shift+alt+up=ignore"
+        "ctrl+shift+alt+down=ignore"
+        "super+shift+left=ignore"
+        "super+shift+right=ignore"
+        "super+shift+up=ignore"
+        "super+shift+down=ignore"
+        "super+alt+left=ignore"
+        "super+alt+right=ignore"
+        "super+alt+up=ignore"
+        "super+alt+down=ignore"
+        "ctrl+alt+left=ignore"
+        "ctrl+alt+right=ignore"
+        "ctrl+alt+up=ignore"
+        "ctrl+alt+down=ignore"
+        
+        # Split creation
+        "super+d=new_split:right"
+        "super+shift+d=new_split:down"
+        
+        # Split navigation
+        "super+ctrl+left=goto_split:left"
+        "super+ctrl+right=goto_split:right"
+        "super+ctrl+up=goto_split:up"
+        "super+ctrl+down=goto_split:down"
+        
+        # Other
+        "super+ctrl+enter=toggle_split_zoom"
+        "super+w=close_surface"
+        "super+k=clear_screen"
+      ];
     };
   };
-
-  # Keybinds (iTerm2-like)
-  xdg.configFile."ghostty/config".text = ''
-    keybind = super+d=new_split:right
-    keybind = super+shift+d=new_split:down
-    keybind = super+left=goto_split:left
-    keybind = super+right=goto_split:right
-    keybind = super+up=goto_split:up
-    keybind = super+down=goto_split:down
-    keybind = super+cmd+enter=toggle_split_zoom
-    keybind = super+w=close_surface
-    keybind = super+k=clear_surface
-  '';
 }
