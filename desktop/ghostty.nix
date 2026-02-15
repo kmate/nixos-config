@@ -22,6 +22,10 @@
       # Splits
       unfocused-split-opacity = 0.5;
 
+      # Behavior
+      quit-after-last-window-closed = true;
+      confirm-close-surface = false;
+
       # Cursor
       cursor-style = "block";
       cursor-opacity = 1.0;
