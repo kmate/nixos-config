@@ -62,10 +62,6 @@
     keybind = super+right=goto_split:right
     keybind = super+up=goto_split:up
     keybind = super+down=goto_split:down
-    keybind = super+cmd+left=resize_split:left,10
-    keybind = super+cmd+right=resize_split:right,10
-    keybind = super+cmd+up=resize_split:up,10
-    keybind = super+cmd+down=resize_split:down,10
     keybind = super+cmd+enter=toggle_split_zoom
     keybind = super+w=close_surface
     keybind = super+k=clear_surface
