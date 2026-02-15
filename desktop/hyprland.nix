@@ -39,7 +39,7 @@ in
       exec-once = google-chrome-stable --ozone-platform=wayland
       exec-once = code
       exec-once = slack
-      exec = pkill waybar & sleep 0.5 && waybar
+      exec-once = pkill waybar; sleep 0.5; waybar
 
       # Input config
       input {
