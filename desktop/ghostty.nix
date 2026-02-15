@@ -25,6 +25,7 @@
       # Behavior
       quit-after-last-window-closed = true;
       confirm-close-surface = false;
+      copy-on-select = true;
 
       # Cursor
       cursor-style = "block";
@@ -98,7 +99,7 @@
         
         # Other
         "super+ctrl+enter=toggle_split_zoom"
-        "super+w=close_surface"
+        "super+ctrl+w=close_surface"
         "super+k=clear_screen"
       ];
     };
