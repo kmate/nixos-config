@@ -24,7 +24,7 @@ mount -t btrfs -o rescue=all,ro /dev/lvm/root /mnt
 6. Backup contents of `/persist`:
 
 ```sh
-BACKUP=/run/media/nixos/Extreme\ SSD/nixos
+BACKUP=/run/media/nixos/backup/nixos
 cp -R /mnt/persist $BACKUP
 ```
 
