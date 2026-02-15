@@ -5,7 +5,10 @@
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot";
       };
-      systemd-boot.enable = true;
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 10;
+      };
     };
     supportedFilesystems = ["btrfs"];
   };
