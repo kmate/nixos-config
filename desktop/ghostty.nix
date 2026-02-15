@@ -99,7 +99,7 @@
         
         # Other
         "super+ctrl+enter=toggle_split_zoom"
-        "super+ctrl+w=close_surface"
+        "super+ctrl+q=close_surface"
         "super+k=clear_screen"
       ];
     };
