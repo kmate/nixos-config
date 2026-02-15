@@ -1,3 +1,12 @@
+{ pkgs, ... }:
+
+let
+  new-terminal = pkgs.writeShellApplication {
+    name = "new-terminal";
+    runtimeInputs = [ pkgs.hyprland pkgs.jq pkgs.ghostty pkgs.wtype ];
+    text = builtins.readFile ./new-terminal.sh;
+  };
+in
 {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -67,7 +76,7 @@
       $mainMod = SUPER
       bind = $mainMod, G, fullscreen,
       bind = ALT SHIFT, RETURN, fullscreen
-      bind = $mainMod, RETURN, exec, ghostty
+      bind = $mainMod, RETURN, exec, ${new-terminal}/bin/new-terminal
       bind = $mainMod, M, exit,
       bind = $mainMod, F, exec, nemo
       bind = $mainMod, V, togglefloating,
