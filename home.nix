@@ -87,7 +87,6 @@
         zon2nix
 
         hyprpicker
-        ghosty
         grim
         networkmanagerapplet
         slurp
