@@ -71,6 +71,10 @@
         "ctrl+alt+right=ignore"
         "ctrl+alt+up=ignore"
         "ctrl+alt+down=ignore"
+        "alt+left=ignore"
+        "alt+right=ignore"
+        "alt+up=ignore"
+        "alt+down=ignore"
         
         # Split creation
         "super+d=new_split:right"
@@ -81,6 +85,12 @@
         "super+ctrl+right=goto_split:right"
         "super+ctrl+up=goto_split:up"
         "super+ctrl+down=goto_split:down"
+        
+        # Split resizing
+        "super+ctrl+shift+left=resize_split:left,10"
+        "super+ctrl+shift+right=resize_split:right,10"
+        "super+ctrl+shift+up=resize_split:up,10"
+        "super+ctrl+shift+down=resize_split:down,10"
         
         # Other
         "super+ctrl+enter=toggle_split_zoom"
