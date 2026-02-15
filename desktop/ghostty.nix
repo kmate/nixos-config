@@ -18,6 +18,9 @@
       window-padding-x = 5;
       window-padding-y = 5;
       background-opacity = 0.9;
+      
+      # Splits
+      unfocused-split-opacity = 0.5;
 
       # Cursor
       cursor-style = "block";
