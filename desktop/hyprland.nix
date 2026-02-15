@@ -26,7 +26,7 @@
       exec-once = hyprctl setcursor volantes_cursors 32
 
       ## Applications
-      exec-once = kitty
+      exec-once = ghosty
       exec-once = google-chrome-stable --ozone-platform=wayland
       exec-once = code
       exec-once = slack
@@ -67,7 +67,7 @@
       $mainMod = SUPER
       bind = $mainMod, G, fullscreen,
       bind = ALT SHIFT, RETURN, fullscreen
-      bind = $mainMod, RETURN, exec, kitty
+      bind = $mainMod, RETURN, exec, ghosty
       bind = $mainMod, M, exit,
       bind = $mainMod, F, exec, nemo
       bind = $mainMod, V, togglefloating,
@@ -151,7 +151,7 @@
       # Window rules
       windowrule = noblur,title:(.*)
 
-      windowrule = workspace 1,class:(kitty)
+      windowrule = workspace 1,class:(ghosty)
       windowrule = workspace 2,class:(google-chrome)
       windowrule = workspace 3,class:(code)
       windowrule = workspace 4,class:(Slack)
