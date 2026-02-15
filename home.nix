@@ -104,7 +104,7 @@
       SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/gcr/ssh";
       EDITOR = "vim";
       BROWSER = "google-chrome";
-      TERMINAL = "ghosty";
+      TERMINAL = "ghostty";
       WLR_NO_HARDWARE_CURSORS = "1";
       WLR_RENDERER_ALLOW_SOFTWARE = "1";
       CLUTTER_BACKEND = "wayland";
