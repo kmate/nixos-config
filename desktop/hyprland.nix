@@ -262,7 +262,7 @@ in
       settings = {
         general = {
           # avoid starting multiple hyprlock instances
-          lock_cmd = "pidof hyprlock || hyprlock";
+          lock_cmd = "pidof hyprlock || hyprlock --grace 5";
           # lock before suspend
           before_sleep_cmd = "loginctl lock-session";
           # to avoid having to press a key twice to turn on the display
@@ -309,10 +309,7 @@ in
     # TODO customize look
     settings = {
       general = {
-        disable_loading_bar = true;
         hide_cursor = true;
-        no_fade_in = true;
-        grace = 5;
       };
 
       background = [
