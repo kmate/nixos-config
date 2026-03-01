@@ -38,7 +38,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    opencode.url = "github:anomalyco/opencode";
+    # Pin OpenCode to v1.2.14 (compatible with bun 1.3.9 available in nixpkgs)
+    # v1.2.15+ requires bun 1.3.10+, which isn't yet in nixpkgs stable or unstable
+    # To update: check `nix eval nixpkgs#bun.version`, then:
+    # - If bun >= 1.3.10: update to "github:anomalyco/opencode" or latest tag
+    # - If bun = 1.3.9: can use v1.2.13 or v1.2.14
+    opencode.url = "github:anomalyco/opencode/v1.2.14";
   };
 
   outputs = {
