@@ -1,0 +1,20 @@
+--- a/src/wfd/wfd-media-factory.c
++++ b/src/wfd/wfd-media-factory.c
+@@ -504,7 +504,7 @@
+   /* We need a high latency for the openh264 encoder at least when the
+    * usage-type is set to "screen". After e.g. scene changes the latency will
+    * be very high for short periods of time, and this prevents further issues. */
+-  gst_pipeline_set_latency (GST_PIPELINE (pipeline), 500 * GST_MSECOND);
++  gst_pipeline_set_latency (GST_PIPELINE (pipeline), 200 * GST_MSECOND);
+ 
+   return pipeline;
+ }
+@@ -530,7 +530,7 @@
+   /* Limit initial video bitrate to 512kBit/s to ensure we don't
+    * saturate the wifi link.
+    * This is a rather bad method, but it kind of works. */
+-  bitrate_kbit = MIN (bitrate_kbit, 512 * 8);
++  bitrate_kbit = MIN (bitrate_kbit, 20000);
+ 
+   if (resolution->interlaced)
+     g_warning ("Resolution should never be set to interlaced as that is not supported with all codecs.");

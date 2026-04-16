@@ -22,6 +22,15 @@
       });
 
     })
+    (final: prev: {
+      # Increase Miracast bitrate from 4 Mbps to 20 Mbps and reduce pipeline
+      # latency from 500ms to 200ms for smoother streaming with hardware encoder.
+      gnome-network-displays = prev.gnome-network-displays.overrideAttrs (oldAttrs: {
+        patches = (oldAttrs.patches or []) ++ [
+          ./patches/gnd-increase-bitrate.patch
+        ];
+      });
+    })
   ];
   security.pam.services.hyprlock = {
     fprintAuth = true;
