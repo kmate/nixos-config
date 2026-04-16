@@ -86,8 +86,9 @@
         zls
         zon2nix
 
-        hyprpicker
+        gnome-network-displays # Miracast screen mirroring to TV
         grim
+        hyprpicker
         networkmanagerapplet
         slurp
         swappy

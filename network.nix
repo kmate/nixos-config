@@ -15,7 +15,14 @@
     firewall = {
       enable = true;
       allowedTCPPorts = [
+        7236 # Miracast RTSP (gnome-network-displays)
         8266 # allows OTA uploads for ESP
+      ];
+      allowedUDPPorts = [
+        7236 # Miracast
+      ];
+      allowedUDPPortRanges = [
+        {from = 32768; to = 61000;} # Miracast RTP video/audio stream
       ];
     };
 

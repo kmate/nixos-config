@@ -1,0 +1,15 @@
+--- a/src/shared/ScreencopyShared.hpp
++++ b/src/shared/ScreencopyShared.hpp
+@@ -16,8 +16,10 @@
+ #include <spa/param/video/format-utils.h>
+ #include <spa/param/video/type-info.h>
+ 
+-#define XDPH_PWR_BUFFERS     4
+-#define XDPH_PWR_BUFFERS_MIN 2
++// Increased buffer counts to prevent "Out of buffers" when consumers
++// (e.g. gnome-network-displays intervideosink) hold onto SHM buffers.
++#define XDPH_PWR_BUFFERS     16
++#define XDPH_PWR_BUFFERS_MIN 8
+ #define XDPH_PWR_ALIGN       16
+ 
+ struct SBuffer {

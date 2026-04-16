@@ -349,4 +349,13 @@ in
       ];
     };
   };
+
+  # xdg-desktop-portal-hyprland config: force SHM buffers for screencopy
+  # Fixes gnome-network-displays (Miracast) frozen frame issue where XDPH
+  # tries DMA-BUF but pipewiresrc requests wl_shm, causing buffer exhaustion
+  xdg.configFile."hypr/xdph.conf".text = ''
+    screencopy {
+      force_shm = true
+    }
+  '';
 }
