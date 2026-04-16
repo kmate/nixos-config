@@ -1,6 +1,38 @@
 --- a/src/wfd/wfd-media-factory.c
 +++ b/src/wfd/wfd-media-factory.c
-@@ -504,7 +504,7 @@
+@@ -398,6 +398,8 @@
+   caps = gst_caps_new_simple ("audio/mpeg",
+                               "channels", G_TYPE_INT, 2,
+                               "rate", G_TYPE_INT, 48000,
++                              "stream-format", G_TYPE_STRING, "adts",
++                              "mpegversion", G_TYPE_INT, 4,
+                               NULL);
+ 
+   success &= gst_element_link_many (audio_source, audioresample, audioconvert, NULL);
+@@ -446,9 +448,19 @@
+    */
+   mpegmux = gst_element_factory_make ("mpegtsmux", "wfd-mpegtsmux");
+   success &= gst_bin_add (bin, mpegmux);
+-  g_object_set (mpegmux,
+-                "alignment", (gint) 7, /* Force the correct alignment for UDP */
+-                NULL);
++  {
++    /* Force PCR onto the video PID (0x1011 = 4113) per WFD spec section 3.3.
++     * Without this, mpegtsmux assigns PCR to whichever stream produces data
++     * first (often audio), which can cause WFD sinks to ignore audio. */
++    GstStructure *prog_map = gst_structure_new ("prog-map",
++                                                 "PCR_1", G_TYPE_INT, 4113,
++                                                 NULL);
++    g_object_set (mpegmux,
++                  "alignment", (gint) 7, /* Force the correct alignment for UDP */
++                  "prog-map", prog_map,
++                  NULL);
++    gst_structure_free (prog_map);
++  }
+ 
+ 
+   queue_pre_payloader = gst_element_factory_make ("queue", "wfd-pre-payloader-queue");
+@@ -504,7 +516,7 @@
    /* We need a high latency for the openh264 encoder at least when the
     * usage-type is set to "screen". After e.g. scene changes the latency will
     * be very high for short periods of time, and this prevents further issues. */
@@ -9,7 +41,7 @@
  
    return pipeline;
  }
-@@ -530,7 +530,7 @@
+@@ -530,7 +542,7 @@
    /* Limit initial video bitrate to 512kBit/s to ensure we don't
     * saturate the wifi link.
     * This is a rather bad method, but it kind of works. */
