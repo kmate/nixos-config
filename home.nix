@@ -97,6 +97,7 @@
         wlr-randr
         pamixer
         pavucontrol
+        psmisc
         volantes-cursors
         wdisplays
       ];
