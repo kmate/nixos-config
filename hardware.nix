@@ -21,7 +21,17 @@
         device = "/dev/disk/by-uuid/3ef61909-6b94-4c46-82bd-44e2880ca5f5";
         preLVM = true;
       };
-      postDeviceCommands = lib.mkAfter ''
+    };
+
+    initrd.systemd.services.rollback = {
+      description = "Rollback BTRFS root subvolume to a pristine state";
+      wantedBy = ["initrd.target"];
+      after = ["dev-mapper-lvm\\x2droot.device"];
+      before = ["sysroot.mount"];
+      unitConfig.DefaultDependencies = "no";
+      serviceConfig.Type = "oneshot";
+      path = [pkgs.btrfs-progs];
+      script = ''
         mkdir /btrfs_tmp
         mount /dev/mapper/lvm-root /btrfs_tmp
         if [[ -e /btrfs_tmp/root ]]; then

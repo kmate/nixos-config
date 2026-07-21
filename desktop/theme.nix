@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   gtk = {
     enable = true;
     iconTheme = {
@@ -19,5 +23,7 @@
       name = "volantes_cursors";
       package = pkgs.volantes-cursors;
     };
+
+    gtk4.theme = config.gtk.theme;
   };
 }
