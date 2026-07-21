@@ -22,7 +22,10 @@
         7236 # Miracast
       ];
       allowedUDPPortRanges = [
-        {from = 32768; to = 61000;} # Miracast RTP video/audio stream
+        {
+          from = 32768;
+          to = 61000;
+        } # Miracast RTP video/audio stream
       ];
     };
 

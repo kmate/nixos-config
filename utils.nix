@@ -2,6 +2,7 @@
   environment = {
     systemPackages = with pkgs; [
       age
+      brightnessctl
       btop
       curl
       git

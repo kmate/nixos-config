@@ -1,16 +1,14 @@
-{ pkgs, ... }:
-
-let
+{pkgs, ...}: let
   new-terminal = pkgs.writeShellApplication {
     name = "new-terminal";
-    runtimeInputs = [ pkgs.hyprland pkgs.jq pkgs.ghostty pkgs.wtype ];
+    runtimeInputs = [pkgs.hyprland pkgs.jq pkgs.ghostty pkgs.wtype];
     text = builtins.readFile ./new-terminal.sh;
   };
-in
-{
+in {
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
+    configType = "hyprlang";
 
     extraConfig = ''
       # Fix slow startup
@@ -273,14 +271,14 @@ in
           # dim monitor backlight after 2.5 mins
           {
             timeout = 150;
-            on-timeout = "light -O && light -S 10";
-            on-resume = "light -I";
+            on-timeout = "brightnessctl -s && brightnessctl set 10%";
+            on-resume = "brightnessctl -r";
           }
           # turn off keyboard backlight after 2.5 mins
           {
             timeout = 150;
-            on-timeout = "light -s sysfs/leds/tpacpi::kbd_backlight -O && light -s sysfs/leds/tpacpi::kbd_backlight -S 0";
-            on-resume = "light -s sysfs/leds/tpacpi::kbd_backlight -I";
+            on-timeout = "brightnessctl -d tpacpi::kbd_backlight -s && brightnessctl -d tpacpi::kbd_backlight set 0";
+            on-resume = "brightnessctl -d tpacpi::kbd_backlight -r";
           }
           # lock screen after 5 mins
           {

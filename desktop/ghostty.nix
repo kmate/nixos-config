@@ -18,7 +18,7 @@
       window-padding-x = 5;
       window-padding-y = 5;
       background-opacity = 0.9;
-      
+
       # Splits
       unfocused-split-opacity = 0.5;
 
@@ -80,23 +80,23 @@
         "alt+right=ignore"
         "alt+up=ignore"
         "alt+down=ignore"
-        
+
         # Split creation
         "super+d=new_split:right"
         "super+shift+d=new_split:down"
-        
+
         # Split navigation
         "super+ctrl+left=goto_split:left"
         "super+ctrl+right=goto_split:right"
         "super+ctrl+up=goto_split:up"
         "super+ctrl+down=goto_split:down"
-        
+
         # Split resizing
         "super+ctrl+shift+left=resize_split:left,10"
         "super+ctrl+shift+right=resize_split:right,10"
         "super+ctrl+shift+up=resize_split:up,10"
         "super+ctrl+shift+down=resize_split:down,10"
-        
+
         # Other
         "super+ctrl+enter=toggle_split_zoom"
         "super+ctrl+q=close_surface"

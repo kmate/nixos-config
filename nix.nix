@@ -1,6 +1,5 @@
 {
   #inputs,
-  nixpkgs,
   ...
 }: {
   system.stateVersion = "23.11";

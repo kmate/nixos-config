@@ -16,19 +16,22 @@
         # Increase PipeWire SHM buffer pool from 4 to 16 (min 8).
         # XDPH runs out of buffers when gnome-network-displays' intervideosink
         # holds references, causing "Out of buffers" and frozen Miracast stream.
-        patches = (oldAttrs.patches or []) ++ [
-          ./patches/xdph-increase-shm-buffers.patch
-        ];
+        patches =
+          (oldAttrs.patches or [])
+          ++ [
+            ./patches/xdph-increase-shm-buffers.patch
+          ];
       });
-
     })
-    (final: prev: {
+    (_final: prev: {
       # Increase Miracast bitrate from 4 Mbps to 20 Mbps and reduce pipeline
       # latency from 500ms to 200ms for smoother streaming with hardware encoder.
       gnome-network-displays = prev.gnome-network-displays.overrideAttrs (oldAttrs: {
-        patches = (oldAttrs.patches or []) ++ [
-          ./patches/gnd-increase-bitrate.patch
-        ];
+        patches =
+          (oldAttrs.patches or [])
+          ++ [
+            ./patches/gnd-increase-bitrate.patch
+          ];
       });
     })
   ];
@@ -57,7 +60,6 @@
         fi
       '';
     };
-    light.enable = true;
     dconf.enable = true;
     regreet.enable = true;
     xwayland.enable = true;
