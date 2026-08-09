@@ -156,29 +156,28 @@ in {
       bind = $mainMod, Q, killactive
 
       # Window rules
-      windowrule = noblur,title:(.*)
+      windowrulev2 = noblur, title:(.*)
 
-      windowrule = workspace 1,class:(ghostty)
-      windowrule = workspace 2,class:(google-chrome)
-      windowrule = workspace 3,class:(code)
-      windowrule = workspace 4,class:(Slack)
+      windowrulev2 = workspace 1, class:(ghostty)
+      windowrulev2 = workspace 2, class:(google-chrome)
+      windowrulev2 = workspace 3, class:(code)
+      windowrulev2 = workspace 4, class:(Slack)
 
       # Dialogs
-      windowrule = float,title:^(Open File)(.*)$
-      windowrule = float,title:^(Open Folder)(.*)$
-      windowrule = float,title:^(Select a File)(.*)$
-      windowrule = float,title:^(Save As)(.*)$
-      windowrule = float,title:^(Library)(.*)$
-      windowrule = float,title:(Volume Control)
-      windowrule = float,title:(Network Connections)
-      windowrule = float,title:(.blueman-manager-wrapped)
-      windowrule = float,class:nemo,title:( Properties)$
+      windowrulev2 = float, title:^(Open File)(.*)$
+      windowrulev2 = float, title:^(Open Folder)(.*)$
+      windowrulev2 = float, title:^(Select a File)(.*)$
+      windowrulev2 = float, title:^(Save As)(.*)$
+      windowrulev2 = float, title:^(Library)(.*)$
+      windowrulev2 = float, title:(Volume Control)
+      windowrulev2 = float, title:(Network Connections)
+      windowrulev2 = float, title:(.blueman-manager-wrapped)
+      windowrulev2 = float, class:nemo, title:( Properties)$
 
       misc {
         disable_hyprland_logo = true
         key_press_enables_dpms = true
         mouse_move_enables_dpms = true
-        vfr = true
       }
 
       general {
@@ -206,10 +205,9 @@ in {
       # tries to mimic Tokyonight-Dark-B-LB
       settings = {
         global = {
-          layout = "overlay";
           width = "(0, 300)";
-          height = 100;
-          offset = "5x5";
+          height = "(0, 100)";
+          offset = "(5, 5)";
 
           font = "sans-serif 9";
           background = "#1F2231";
