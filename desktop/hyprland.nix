@@ -11,9 +11,17 @@ in {
     configType = "lua";
 
     extraConfig = ''
-      -- Fix slow startup
-      hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
-      hl.exec_cmd("dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+      -- Startup
+      hl.on("hyprland.start", function()
+        hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+        hl.exec_cmd("dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+        hl.exec_cmd("hyprctl setcursor volantes_cursors 32")
+        hl.exec_cmd("ghostty")
+        hl.exec_cmd("google-chrome-stable --ozone-platform=wayland")
+        hl.exec_cmd("code")
+        hl.exec_cmd("slack")
+        hl.exec_cmd("pkill waybar; sleep 0.5; waybar")
+      end)
 
       -- Change monitor to high resolution, the last argument is the scale factor
       hl.monitor({ output = "", mode = "highres", position = "auto", scale = 2 })
@@ -22,14 +30,6 @@ in {
       hl.env("GDK_SCALE", "2")
       hl.env("QT_AUTO_SCREEN_SCALE_FACTOR", "auto")
       hl.env("XCURSOR_SIZE", "24")
-
-      -- Autostart
-      hl.exec_once("hyprctl setcursor volantes_cursors 32")
-      hl.exec_once("ghostty")
-      hl.exec_once("google-chrome-stable --ozone-platform=wayland")
-      hl.exec_once("code")
-      hl.exec_once("slack")
-      hl.exec_once("pkill waybar; sleep 0.5; waybar")
 
       -- Input config
       hl.config({
@@ -64,7 +64,10 @@ in {
           gaps_workspaces = 0,
           resize_on_border = true,
           extend_border_grab_area = 20,
-          ["col.active_border"] = "rgb(ae2077) rgb(db1f83) rgb(213477) rgb(1da2eb) 45deg",
+          ["col.active_border"] = {
+            colors = { "rgb(ae2077)", "rgb(db1f83)", "rgb(213477)", "rgb(1da2eb)" },
+            angle = 45
+          }
         },
         decoration = {
           rounding = 2,
@@ -90,7 +93,7 @@ in {
       hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd("${new-terminal}/bin/new-terminal"))
       hl.bind(mainMod .. " + M", hl.dsp.exit())
       hl.bind(mainMod .. " + F", hl.dsp.exec_cmd("nemo"))
-      hl.bind(mainMod .. " + V", hl.dsp.window.toggle_floating())
+      hl.bind(mainMod .. " + V", hl.dsp.window.float())
       hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("anyrun"))
 
       -- Switch to the next keyboard layout
@@ -115,36 +118,42 @@ in {
 
       -- Switch between windows in a floating workspace
       hl.bind("SUPER + Tab", hl.dsp.window.cycle_next())
-      hl.bind("SUPER + Tab", hl.dsp.window.bring_active_to_top())
+      hl.bind("SUPER + Tab", hl.dsp.window.bring_to_top())
 
-      -- Move focus with mainMod + arrow keys
-      hl.bind(mainMod .. " + left", hl.dsp.window.focus({ direction = "left" }))
-      hl.bind(mainMod .. " + right", hl.dsp.window.focus({ direction = "right" }))
-      hl.bind(mainMod .. " + up", hl.dsp.window.focus({ direction = "up" }))
-      hl.bind(mainMod .. " + down", hl.dsp.window.focus({ direction = "down" }))
+      -- TODO: fix movefocus dispatcher (hl.dsp.focus exists but args unknown)
+      -- hl.bind(mainMod .. " + left", hl.dsp.window.focus({ direction = "left" }))
+      -- hl.bind(mainMod .. " + right", hl.dsp.window.focus({ direction = "right" }))
+      -- hl.bind(mainMod .. " + up", hl.dsp.window.focus({ direction = "up" }))
+      -- hl.bind(mainMod .. " + down", hl.dsp.window.focus({ direction = "down" }))
 
-      -- Switch workspaces with mainMod + [0-9]
+      -- Loop to create bindings for workspaces 1 through 9
       for i = 1, 9 do
-        hl.bind(mainMod .. " + " .. i, hl.dsp.workspace(i))
-        hl.bind(mainMod .. " + SHIFT + " .. i, hl.dsp.window.move({ workspace = i }))
+          -- Switch to workspace (SUPER + [1-9])
+          hl.bind(mainMod .. " + " .. i, function()
+              hl.dispatch(hl.dsp.focus({ workspace = tostring(i) }))
+          end)
+
+          -- Move active window to workspace silently (SUPER + SHIFT + [1-9])
+          hl.bind(mainMod .. " + SHIFT + " .. i, function()
+              hl.dispatch(hl.dsp.window.move({ workspace = tostring(i), silent = true }))
+          end)
       end
-      hl.bind(mainMod .. " + 0", hl.dsp.workspace(10))
-      hl.bind(mainMod .. " + SHIFT + 0", hl.dsp.window.move({ workspace = 10 }))
 
-      -- Switch workspaces with mainMod + arrows
-      hl.bind(mainMod .. " + SHIFT + right", hl.dsp.workspace({ relative = 1 }))
-      hl.bind(mainMod .. " + SHIFT + left", hl.dsp.workspace({ relative = -1 }))
+      -- TODO
+      -- hl.bind(mainMod .. " + 0", hl.dsp.workspace(10))
+      -- hl.bind(mainMod .. " + SHIFT + 0", hl.dsp.window.move({ workspace = 10 }))
+      -- hl.bind(mainMod .. " + SHIFT + right", hl.dsp.workspace({ relative = 1 }))
+      -- hl.bind(mainMod .. " + SHIFT + left", hl.dsp.workspace({ relative = -1 }))
+      -- hl.bind(mainMod .. " + SHIFT + RETURN", hl.dsp.window.move({ workspace = "empty" }))
+      -- hl.bind(mainMod .. " + mouse_down", hl.dsp.workspace({ relative = 1 }), { mouse = true })
+      -- hl.bind(mainMod .. " + mouse_up", hl.dsp.workspace({ relative = -1 }), { mouse = true })
+      -- hl.bind("mouse:276", hl.dsp.workspace({ relative = 1 }), { mouse = true })
+      -- hl.bind("mouse:275", hl.dsp.workspace({ relative = -1 }), { mouse = true })
 
-      -- Move active window to a new empty workspace
-      hl.bind(mainMod .. " + SHIFT + RETURN", hl.dsp.window.move({ workspace = "empty" }))
 
-      -- Scroll through existing workspaces with mainMod + scroll
-      hl.bind(mainMod .. " + mouse_down", hl.dsp.workspace({ relative = 1 }), { mouse = true })
-      hl.bind(mainMod .. " + mouse_up", hl.dsp.workspace({ relative = -1 }), { mouse = true })
 
-      -- Scroll through existing workspaces with side scroll
-      hl.bind("mouse:276", hl.dsp.workspace({ relative = 1 }), { mouse = true })
-      hl.bind("mouse:275", hl.dsp.workspace({ relative = -1 }), { mouse = true })
+
+
 
       -- Move/resize windows with mainMod + LMB/RMB and dragging
       hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
