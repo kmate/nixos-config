@@ -8,193 +8,170 @@ in {
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
-    configType = "hyprlang";
+    configType = "lua";
 
     extraConfig = ''
-      # Fix slow startup
-      exec = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-      exec = dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+      -- Fix slow startup
+      hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+      hl.exec_cmd("dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 
-      # Change monitor to high resolution, the last argument is the scale factor
-      monitor=,highres,auto,2
+      -- Change monitor to high resolution, the last argument is the scale factor
+      hl.monitor({ output = "", mode = "highres", position = "auto", scale = 2 })
 
-      # Unscale XWayland
-      xwayland {
-        force_zero_scaling = true
-      }
+      -- Toolkit-specific scale
+      hl.env("GDK_SCALE", "2")
+      hl.env("QT_AUTO_SCREEN_SCALE_FACTOR", "auto")
+      hl.env("XCURSOR_SIZE", "24")
 
-      # Toolkit-specific scale
-      env = GDK_SCALE,2
-      env = QT_AUTO_SCREEN_SCALE_FACTOR,auto
-      env = XCURSOR_SIZE,24
+      -- Autostart
+      hl.exec_once("hyprctl setcursor volantes_cursors 32")
+      hl.exec_once("ghostty")
+      hl.exec_once("google-chrome-stable --ozone-platform=wayland")
+      hl.exec_once("code")
+      hl.exec_once("slack")
+      hl.exec_once("pkill waybar; sleep 0.5; waybar")
 
-      # Autostart
-      ## System utilities
-      exec-once = hyprctl setcursor volantes_cursors 32
+      -- Input config
+      hl.config({
+        input = {
+          kb_layout = "us,hu",
+          kb_variant = ",101_qwerty_comma_nodead",
+          kb_options = "caps:escape",
+          follow_mouse = 1,
+          touchpad = {
+            natural_scroll = false,
+          },
+          sensitivity = 0,
+        },
+        xwayland = {
+          force_zero_scaling = true,
+        },
+        gestures = {
+          workspace_swipe_invert = false,
+          workspace_swipe_distance = 500,
+          workspace_swipe_cancel_ratio = 0.5,
+          workspace_swipe_min_speed_to_force = 10,
+          workspace_swipe_create_new = true,
+        },
+        misc = {
+          disable_hyprland_logo = true,
+          key_press_enables_dpms = true,
+          mouse_move_enables_dpms = true,
+        },
+        general = {
+          gaps_in = 2,
+          gaps_out = 2,
+          gaps_workspaces = 0,
+          resize_on_border = true,
+          extend_border_grab_area = 20,
+          ["col.active_border"] = "rgb(ae2077) rgb(db1f83) rgb(213477) rgb(1da2eb) 45deg",
+        },
+        decoration = {
+          rounding = 2,
+          dim_inactive = false,
+        },
+      })
 
-      ## Applications
-      exec-once = ghostty
-      exec-once = google-chrome-stable --ozone-platform=wayland
-      exec-once = code
-      exec-once = slack
-      exec-once = pkill waybar; sleep 0.5; waybar
+      hl.device({
+        name = "lenovo-thinkpad-laser-wireless-mouse",
+        sensitivity = -0.5,
+      })
 
-      # Input config
-      input {
-        kb_layout = us,hu
-        kb_variant = ,101_qwerty_comma_nodead
-        kb_model =
-        kb_options = caps:escape
-        kb_rules =
+      hl.gesture({
+        fingers = 3,
+        direction = "horizontal",
+        action = "workspace",
+      })
 
-        follow_mouse = 1
+      -- Binds
+      local mainMod = "SUPER"
+      hl.bind(mainMod .. " + G", hl.dsp.window.fullscreen())
+      hl.bind("ALT + SHIFT + RETURN", hl.dsp.window.fullscreen())
+      hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd("${new-terminal}/bin/new-terminal"))
+      hl.bind(mainMod .. " + M", hl.dsp.exit())
+      hl.bind(mainMod .. " + F", hl.dsp.exec_cmd("nemo"))
+      hl.bind(mainMod .. " + V", hl.dsp.window.toggle_floating())
+      hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("anyrun"))
 
-        touchpad {
-          natural_scroll = false
-        }
+      -- Switch to the next keyboard layout
+      hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("hyprctl switchxkblayout at-translated-set-2-keyboard next"))
 
-        sensitivity = 0
-      }
+      -- Screenshot
+      hl.bind("Print", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | swappy -f -'))
 
-      device {
-        name = lenovo-thinkpad-laser-wireless-mouse
-        sensitivity = -0.5
-      }
+      -- Color picker
+      hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("hyprpicker --autocopy"))
+      hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("hyprpicker --autocopy --format=rgb"))
 
-      gesture = 3, horizontal, workspace
+      -- Functional keybinds
+      hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("pamixer --default-source -t"))
+      hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 5%-"))
+      hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set 5%+"))
+      hl.bind("XF86AudioMute", hl.dsp.exec_cmd("pamixer -t"))
+      hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("pamixer -d 5"))
+      hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("pamixer -i 5"))
+      hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"))
+      hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"))
 
-      gestures {
-        workspace_swipe_invert = false
-        workspace_swipe_distance = 500
-        workspace_swipe_cancel_ratio = 0.5
-        workspace_swipe_min_speed_to_force = 10
-        workspace_swipe_create_new = true
-      }
+      -- Switch between windows in a floating workspace
+      hl.bind("SUPER + Tab", hl.dsp.window.cycle_next())
+      hl.bind("SUPER + Tab", hl.dsp.window.bring_active_to_top())
 
-      $mainMod = SUPER
-      bind = $mainMod, G, fullscreen,
-      bind = ALT SHIFT, RETURN, fullscreen
-      bind = $mainMod, RETURN, exec, ${new-terminal}/bin/new-terminal
-      bind = $mainMod, M, exit,
-      bind = $mainMod, F, exec, nemo
-      bind = $mainMod, V, togglefloating,
-      bind = $mainMod, R, exec, anyrun
+      -- Move focus with mainMod + arrow keys
+      hl.bind(mainMod .. " + left", hl.dsp.window.focus({ direction = "left" }))
+      hl.bind(mainMod .. " + right", hl.dsp.window.focus({ direction = "right" }))
+      hl.bind(mainMod .. " + up", hl.dsp.window.focus({ direction = "up" }))
+      hl.bind(mainMod .. " + down", hl.dsp.window.focus({ direction = "down" }))
 
-      # Switch to the next keyboard layout
-      bind = $mainMod, SPACE, exec, hyprctl switchxkblayout at-translated-set-2-keyboard next
+      -- Switch workspaces with mainMod + [0-9]
+      for i = 1, 9 do
+        hl.bind(mainMod .. " + " .. i, hl.dsp.workspace(i))
+        hl.bind(mainMod .. " + SHIFT + " .. i, hl.dsp.window.move({ workspace = i }))
+      end
+      hl.bind(mainMod .. " + 0", hl.dsp.workspace(10))
+      hl.bind(mainMod .. " + SHIFT + 0", hl.dsp.window.move({ workspace = 10 }))
 
-      # Screenshot
-      bind = , Print, exec, grim -g "$(slurp -d)" - | swappy -f -
+      -- Switch workspaces with mainMod + arrows
+      hl.bind(mainMod .. " + SHIFT + right", hl.dsp.workspace({ relative = 1 }))
+      hl.bind(mainMod .. " + SHIFT + left", hl.dsp.workspace({ relative = -1 }))
 
-      # Color picker
-      bind = $mainMod, C, exec, hyprpicker --autocopy
-      bind = $mainMod SHIFT, C, exec, hyprpicker --autocopy --format=rgb
+      -- Move active window to a new empty workspace
+      hl.bind(mainMod .. " + SHIFT + RETURN", hl.dsp.window.move({ workspace = "empty" }))
 
-      # Functional keybinds
-      bind =,XF86AudioMicMute,exec,pamixer --default-source -t
-      bind =,XF86MonBrightnessDown,exec,brightnessctl set 5%-
-      bind =,XF86MonBrightnessUp,exec,brightnessctl set 5%+
-      bind =,XF86AudioMute,exec,pamixer -t
-      bind =,XF86AudioLowerVolume,exec,pamixer -d 5
-      bind =,XF86AudioRaiseVolume,exec,pamixer -i 5
-      bind =,XF86AudioPlay,exec,playerctl play-pause
-      bind =,XF86AudioPause,exec,playerctl play-pause
+      -- Scroll through existing workspaces with mainMod + scroll
+      hl.bind(mainMod .. " + mouse_down", hl.dsp.workspace({ relative = 1 }), { mouse = true })
+      hl.bind(mainMod .. " + mouse_up", hl.dsp.workspace({ relative = -1 }), { mouse = true })
 
-      # to switch between windows in a floating workspace
-      bind = SUPER,Tab,cyclenext,
-      bind = SUPER,Tab,bringactivetotop,
+      -- Scroll through existing workspaces with side scroll
+      hl.bind("mouse:276", hl.dsp.workspace({ relative = 1 }), { mouse = true })
+      hl.bind("mouse:275", hl.dsp.workspace({ relative = -1 }), { mouse = true })
 
-      # Move focus with mainMod + arrow keys
-      bind = $mainMod, left, movefocus, l
-      bind = $mainMod, right, movefocus, r
-      bind = $mainMod, up, movefocus, u
-      bind = $mainMod, down, movefocus, d
+      -- Move/resize windows with mainMod + LMB/RMB and dragging
+      hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
+      hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+      hl.bind("ALT + mouse:272", hl.dsp.window.resize(), { mouse = true })
 
-      # Switch workspaces with mainMod + [0-9]
-      bind = $mainMod, 1, workspace, 1
-      bind = $mainMod, 2, workspace, 2
-      bind = $mainMod, 3, workspace, 3
-      bind = $mainMod, 4, workspace, 4
-      bind = $mainMod, 5, workspace, 5
-      bind = $mainMod, 6, workspace, 6
-      bind = $mainMod, 7, workspace, 7
-      bind = $mainMod, 8, workspace, 8
-      bind = $mainMod, 9, workspace, 9
-      bind = $mainMod, 0, workspace, 10
-      # Switch workspaces with mainMod + arrows
-      bind = $mainMod SHIFT, right, workspace, +1
-      bind = $mainMod SHIFT, left, workspace, -1
+      -- Kill / close
+      hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 
-      # Move active window to a workspace with mainMod + SHIFT + [0-9]
-      bind = $mainMod SHIFT, 1, movetoworkspace, 1
-      bind = $mainMod SHIFT, 2, movetoworkspace, 2
-      bind = $mainMod SHIFT, 3, movetoworkspace, 3
-      bind = $mainMod SHIFT, 4, movetoworkspace, 4
-      bind = $mainMod SHIFT, 5, movetoworkspace, 5
-      bind = $mainMod SHIFT, 6, movetoworkspace, 6
-      bind = $mainMod SHIFT, 7, movetoworkspace, 7
-      bind = $mainMod SHIFT, 8, movetoworkspace, 8
-      bind = $mainMod SHIFT, 9, movetoworkspace, 9
-      bind = $mainMod SHIFT, 0, movetoworkspace, 10
-      # Move active window to a new empty workspace
-      bind = $mainMod SHIFT, RETURN, movetoworkspace, empty
+      -- Window rules
+      hl.window_rule({ match = { title = "(.*)" }, no_blur = true })
 
-      # Scroll through existing workspaces with mainMod + scroll
-      bind = $mainMod, mouse_down, workspace, e+1
-      bind = $mainMod, mouse_up, workspace, e-1
+      hl.window_rule({ match = { class = "ghostty" }, workspace = "1" })
+      hl.window_rule({ match = { class = "google-chrome" }, workspace = "2" })
+      hl.window_rule({ match = { class = "code" }, workspace = "3" })
+      hl.window_rule({ match = { class = "Slack" }, workspace = "4" })
 
-      # Scroll through existing workspaces with side scroll
-      bind = , mouse:276, workspace, e+1
-      bind = , mouse:275, workspace, e-1
-
-      # Move/resize windows with mainMod + LMB/RMB and dragging
-      bindm = $mainMod, mouse:272, movewindow
-      bindm = $mainMod, mouse:273, resizewindow
-      bindm = ALT, mouse:272, resizewindow
-
-      # Killing / closing things
-      bind = $mainMod, Q, killactive
-
-      # Window rules
-      windowrulev2 = noblur, title:(.*)
-
-      windowrulev2 = workspace 1, class:(ghostty)
-      windowrulev2 = workspace 2, class:(google-chrome)
-      windowrulev2 = workspace 3, class:(code)
-      windowrulev2 = workspace 4, class:(Slack)
-
-      # Dialogs
-      windowrulev2 = float, title:^(Open File)(.*)$
-      windowrulev2 = float, title:^(Open Folder)(.*)$
-      windowrulev2 = float, title:^(Select a File)(.*)$
-      windowrulev2 = float, title:^(Save As)(.*)$
-      windowrulev2 = float, title:^(Library)(.*)$
-      windowrulev2 = float, title:(Volume Control)
-      windowrulev2 = float, title:(Network Connections)
-      windowrulev2 = float, title:(.blueman-manager-wrapped)
-      windowrulev2 = float, class:nemo, title:( Properties)$
-
-      misc {
-        disable_hyprland_logo = true
-        key_press_enables_dpms = true
-        mouse_move_enables_dpms = true
-      }
-
-      general {
-        gaps_in = 2
-        gaps_out = 2
-        gaps_workspaces = 0
-
-        resize_on_border = true
-        extend_border_grab_area = 20
-
-        col.active_border = rgb(ae2077) rgb(db1f83) rgb(213477) rgb(1da2eb) 45deg
-      }
-
-      decoration {
-        rounding = 2
-        dim_inactive = false
-      }
+      -- Dialogs
+      hl.window_rule({ match = { title = "^(Open File)(.*)$" }, float = true })
+      hl.window_rule({ match = { title = "^(Open Folder)(.*)$" }, float = true })
+      hl.window_rule({ match = { title = "^(Select a File)(.*)$" }, float = true })
+      hl.window_rule({ match = { title = "^(Save As)(.*)$" }, float = true })
+      hl.window_rule({ match = { title = "^(Library)(.*)$" }, float = true })
+      hl.window_rule({ match = { title = "(Volume Control)" }, float = true })
+      hl.window_rule({ match = { title = "(Network Connections)" }, float = true })
+      hl.window_rule({ match = { title = "(.blueman-manager-wrapped)" }, float = true })
+      hl.window_rule({ match = { class = "nemo", title = "( Properties)$" }, float = true })
     '';
   };
 
