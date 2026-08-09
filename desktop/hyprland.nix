@@ -169,7 +169,7 @@ in {
       hl.window_rule({ match = { class = "ghostty" }, workspace = "1" })
       hl.window_rule({ match = { class = "google-chrome" }, workspace = "2" })
       hl.window_rule({ match = { class = "code" }, workspace = "3" })
-      hl.window_rule({ match = { class = "Slack" }, workspace = "4" })
+      hl.window_rule({ match = { class = "slack" }, workspace = "4" })
 
       -- Dialogs
       hl.window_rule({ match = { title = "^(Open File)(.*)$" }, float = true })
