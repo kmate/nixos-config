@@ -30,7 +30,7 @@
       before = ["sysroot.mount"];
       unitConfig.DefaultDependencies = "no";
       serviceConfig.Type = "oneshot";
-      path = [pkgs.btrfs-progs];
+      path = [pkgs.btrfs-progs pkgs.coreutils pkgs.util-linux pkgs.findutils];
       script = ''
         mkdir /btrfs_tmp
         mount /dev/mapper/lvm-root /btrfs_tmp
