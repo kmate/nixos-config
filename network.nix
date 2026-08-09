@@ -8,6 +8,13 @@
     nssmdns4 = true;
   };
 
+  # NM connection files must be owner-readable only (600); directory 700.
+  # Files in /persist are bind-mounted to /etc/NetworkManager/system-connections.
+  system.activationScripts.fix-nm-permissions = ''
+    chmod 700 /etc/NetworkManager/system-connections 2>/dev/null || true
+    chmod 600 /etc/NetworkManager/system-connections/*.nmconnection 2>/dev/null || true
+  '';
+
   networking = {
     hostName = "x";
     useDHCP = lib.mkDefault true;
