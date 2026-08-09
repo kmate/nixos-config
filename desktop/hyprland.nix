@@ -92,8 +92,8 @@ in {
 
       # Functional keybinds
       bind =,XF86AudioMicMute,exec,pamixer --default-source -t
-      bind =,XF86MonBrightnessDown,exec,light -U 5
-      bind =,XF86MonBrightnessUp,exec,light -A 5
+      bind =,XF86MonBrightnessDown,exec,brightnessctl set 5%-
+      bind =,XF86MonBrightnessUp,exec,brightnessctl set 5%+
       bind =,XF86AudioMute,exec,pamixer -t
       bind =,XF86AudioLowerVolume,exec,pamixer -d 5
       bind =,XF86AudioRaiseVolume,exec,pamixer -i 5
