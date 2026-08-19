@@ -48,6 +48,7 @@
     in
       with pkgs; [
         alejandra
+        blender
         brave
         dive
         docker-compose
