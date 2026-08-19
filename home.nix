@@ -61,7 +61,7 @@
         hunspellDicts.en_US
         hunspellDicts.hu_HU
         inkscape-with-extensions
-        jetbrains.idea-oss
+        jetbrains.idea
         libreoffice-qt
         nemo
         ngrok
