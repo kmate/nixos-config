@@ -75,6 +75,7 @@
           ./locale.nix
           ./users.nix
           ./fingerprint.nix
+          ./flatpak.nix
           ./fonts.nix
           ./desktop.nix
           ./platformio.nix
