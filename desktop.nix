@@ -56,7 +56,7 @@
     bash = {
       interactiveShellInit = ''
         if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-          WLR_NO_HARDWARE_CURSORS=1 Hyprland
+          WLR_NO_HARDWARE_CURSORS=1 start-hyprland
         fi
       '';
     };
