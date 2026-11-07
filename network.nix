@@ -38,6 +38,11 @@
 
     networkmanager = {
       enable = true;
+      settings = {
+        connection = {
+          "wifi.powersave" = 2;
+        };
+      };
       ensureProfiles = {
         environmentFiles = [config.sops.secrets."network-manager.env".path];
         profiles = {
