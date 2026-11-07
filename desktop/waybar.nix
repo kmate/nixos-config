@@ -17,6 +17,7 @@
       ];
       modules-right = [
         "idle_inhibitor"
+        "power-profiles-daemon"
         "pulseaudio"
         "backlight"
         "hyprland/language"
