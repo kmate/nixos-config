@@ -47,6 +47,17 @@
           deactivated = "";
         };
       };
+      "power-profiles-daemon" = {
+        format = "{icon}";
+        tooltip-format = "Power profile: {profile}\nDriver: {driver}";
+        tooltip = true;
+        format-icons = {
+          default = "";
+          performance = "";
+          balanced = "";
+          power-saver = "";
+        };
+      };
       tray = {
         # "icon-size": 21,
         spacing = 10;
