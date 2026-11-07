@@ -59,6 +59,9 @@
     kernelModules = ["kvm-amd" "amdgpu"];
     kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = [];
+    extraModprobeConfig = ''
+      options cfg80211 ieee80211_regdom="HU"
+    '';
     resumeDevice = "/dev/disk/by-uuid/14b2d361-9a84-4eff-8ffe-c8f33a40e769";
   };
 
@@ -105,6 +108,7 @@
 
   hardware = {
     bluetooth.enable = true;
+    wirelessRegulatoryDatabase = true;
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     graphics = {
       enable = true;
