@@ -17,7 +17,6 @@ in {
         hl.exec_cmd("dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE")
         hl.exec_cmd("hyprctl setcursor volantes_cursors 32")
         hl.exec_cmd("hyprpaper")
-        hl.exec_cmd("waybar")
         hl.exec_cmd("ghostty")
         hl.exec_cmd("google-chrome-stable --ozone-platform=wayland")
         hl.exec_cmd("code")
