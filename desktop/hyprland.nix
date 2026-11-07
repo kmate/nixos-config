@@ -232,8 +232,14 @@ in {
 
       settings = {
         splash = false;
-        preload = ["${./wallpaper.jpg}"];
-        wallpaper = [",${./wallpaper.jpg}"];
+
+        wallpaper = [
+          {
+            monitor = "eDP-1";
+            path = "${./wallpaper.jpg}";
+            fit_mode = "cover";
+          }
+        ];
       };
     };
 
