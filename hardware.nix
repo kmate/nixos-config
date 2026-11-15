@@ -114,6 +114,10 @@
       enable = true;
       enable32Bit = true;
     };
+    sane = {
+      enable = true;
+      extraBackends = [pkgs.hplipWithPlugin];
+    };
   };
 
   security.rtkit.enable = true;
